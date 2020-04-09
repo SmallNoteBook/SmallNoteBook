@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <!-- 引入组件库 -->
-    <script src="../static/js/jquery-3.4.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body>
 <div id="app">
-{{ msg }}
+    {{ msg }}
+    <el-row>
+        <el-button type="primary" @click="init">获取用户</el-button>
+    </el-row>
 </div>
 <script>
     var app = new Vue({
@@ -24,6 +27,12 @@
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
             },
+            init(){
+                $.post('/admin/user/list',{},function (text) {
+                    this.msg = JSON.stringify(text)
+                    alert(this.msg);
+                })
+            }
         }
     })
 </script>

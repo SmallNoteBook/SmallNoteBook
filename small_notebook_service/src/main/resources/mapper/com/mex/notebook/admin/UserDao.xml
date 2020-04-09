@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mex.notebook.admin.dao.UserDao">
+
+    <!-- 采用别名使用类成员变量，可根据需求，确定是否启用 -->
+    <resultMap type="com.mex.notebook.admin.entity.User" id="userMap">
+        <id property="id" column="id"/>
+        <result property="username" column="userName"/>
+        <result property="password" column="passWord"/>
+        <result property="realname" column="realName"/>
+        <!-- 新增外键的名称信息，用于展示使用 -->
+    </resultMap>
+
+    <!-- 增加扩展类的User对象
+    <resultMap type="com.mex.notebook.admin.entity.User" id="userMap" extends="userInitMap">
+        <association property="globalApp" column="APP_ID" select="com.wonders.ss.global.dao.GlobalAppDao.findById"></association>
+    </resultMap>-->
+
+    <!-- find by id，通过主键获取对象 -->
+    <select id="findById" resultMap="userMap">
+        SELECT B.*
+        FROM user B
+        WHERE id = #{value}
+    </select>
+
+    <!-- get list，通过输入的条件，获取返回的list列表对象
+    如果offset和limit不为空（Query对象传入），则采用相应的分页规则和commonList内的条件，
+        查询出相应记录并进行分页处理取出offset页的limit条记录
+    否则，根据commonList内的条件取出全部记录
+    全部列表的参数详见commonList内的各个条件说明
+    -->
+    <select id="getList" resultMap="userMap">
+        SELECT B.*
+        FROM
+        <choose>
+            <when test="offset != null and limit != null">
+            (SELECT A.*, ROWNUM AS RN FROM
+                (SELECT * FROM
+                user
+                WHERE 1 = 1
+                <include refid="commonList"></include>
+                <choose>
+                  <when test='sidx != null and sidx.trim() != ""'>
+                ORDER BY ${sidx} ${order}
+                  </when>
+                  <otherwise>
+                ORDER BY id DESC
+                  </otherwise>
+                </choose>
+                ) A
+                <![CDATA[WHERE ROWNUM <= (#{offset} + #{limit}) ]]>
+            ) B
+            <![CDATA[WHERE RN > #{offset}]]>
+            </when>
+            <otherwise>
+                user B
+                WHERE 1 = 1
+                <include refid="commonList"></include>
+                <!-- 可以增加特定查询条件 -->
+                <choose>
+                    <when test='sidx != null and sidx.trim() != ""'>
+                ORDER BY ${sidx} ${order}
+                    </when>
+                    <otherwise>
+                ORDER BY id DESC
+                    </otherwise>
+                </choose>
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- sql commonList 通过输入的条件，获取返回的list列表对象
+    -->
+    <sql id="commonList">
+        <!-- 可以增加特定查询条件 -->
+        ${filterSql}
+    </sql>
+
+    <!-- save object，保存对象信息 -->
+    <insert id="save" parameterType="com.mex.notebook.admin.entity.User">
+        INSERT INTO user
+        (
+        id, userName, passWord, realName        )
+        VALUES
+        (
+        <choose>
+            <when test='id != null'>#{id},  </when>
+            <otherwise>  S_user.NEXTVAL ,  </otherwise>
+        </choose>
+#{username}, #{password}, #{realname}        )
+    </insert>
+
+    <!-- update object，更新对象信息 -->
+    <update id="update" parameterType="com.mex.notebook.admin.entity.User">
+        UPDATE user
+        <set>
+            <if test="username != null">userName = #{username}, </if>
+            <if test="password != null">passWord = #{password}, </if>
+            <if test="realname != null">realName = #{realname}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- delete by id，通过主键删除对象 -->
+    <delete id="deleteById">
+        DELETE FROM user
+        WHERE id = #{value}
+    </delete>
+
+    <!-- delete by ids，通过主键数组批量删除对象 -->
+    <delete id="deleteByIds">
+        DELETE FROM user
+        WHERE id IN
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- query total，通过输入的条件，查询返回结果的数量，返回值为int -->
+    <select id="queryTotal" resultType="int">
+        SELECT COUNT(*) FROM
+        user B
+        WHERE 1 = 1
+        <include refid="commonList"></include>
+    </select>
+
+    <!-- 以下为新增特定的操作 -->
+
+</mapper>
