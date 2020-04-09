@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- 引入组件库 -->
+    <script src="../static/js/jquery-3.4.0.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+{{ msg }}
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg:"helle"
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            },
+        }
+    })
+</script>
+<style>
+    body,#app{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</body>
+</html>
