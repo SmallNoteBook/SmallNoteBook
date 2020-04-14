@@ -6,16 +6,13 @@ import 'package:notebook/signPage/routes.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     final Map<String, WidgetBuilder> _routes = {};
     _routes.addAll(HomeRoutes.routes);
     _routes.addAll(SignRoutes.routes);
 
     Route _routeGenerator(RouteSettings settings) {
-
       final String name = settings.name;
       final Function pageBuilder = _routes[name];
       if (pageBuilder != null) {
@@ -31,12 +28,12 @@ class MyApp extends StatelessWidget {
       }
       return MaterialPageRoute(builder: (context) => Login());
     }
-    
+
     return MaterialApp(
       title: 'Flutter Demo',
 //     routes: _routes,
       initialRoute: '/',
-      onGenerateRoute:_routeGenerator,
+      onGenerateRoute: _routeGenerator,
     );
   }
 }
