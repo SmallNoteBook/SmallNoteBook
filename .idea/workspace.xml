@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e20754ce-7e27-46e6-99b9-681388b25414" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/fileColors.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/components/ScaffoldLayout.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/movielist.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/routes.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/login/login.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/signPage/routes.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/signPage/signPage.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/main.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/main.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" afterPath="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/pom.xml" afterPath="$PROJECT_DIR$/small_notebook_service/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/admin/dao/UserDao.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/admin/dao/UserDao.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/contact.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/relation.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/share.dart" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" />
+      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,43 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart">
+      <file leaf-file-name="login.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/login/login.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="43" column="43" lean-forward="true" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/text.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="336" column="23" lean-forward="false" selection-start-line="336" selection-start-column="18" selection-end-line="336" selection-end-column="23" />
+            <state relative-caret-position="390">
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="icon.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/icon.dart">
+      <file leaf-file-name="loginForm.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="69" column="8" lean-forward="false" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScaffoldLayout.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/components/ScaffoldLayout.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            <state relative-caret-position="334">
+              <caret line="176" column="20" lean-forward="true" selection-start-line="176" selection-start-column="20" selection-end-line="176" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -106,7 +72,14 @@
       <find>sca</find>
       <find>ModalRoute</find>
       <find>print</find>
+      <find>optionStyle</find>
+      <find>selectOption</find>
+      <find>Message</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Relation</replace>
+      <replace>Share</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/small_notebook_flutter/images</dir>
     </dirStrings>
@@ -129,9 +102,13 @@
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/signPage/signPage.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/signPage/routes.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/main.dart" />
-        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/components/ScaffoldLayout.dart" />
+        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/message.dart" />
+        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/contact.dart" />
+        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/relation.dart" />
+        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/share.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" />
+        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
       </list>
     </option>
   </component>
@@ -191,6 +168,12 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="small_notebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="small_notebook_flutter" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -233,6 +216,9 @@
     <property name="SearchEverywhereHistoryKey" value="Save Actions&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/small_notebook_flutter/lib/home" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/small_notebook_flutter/images" />
       <recent name="$PROJECT_DIR$/small_notebook_flutter/lib" />
@@ -389,7 +375,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18097281" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -437,9 +423,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#40#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -601,14 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/login/login.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/single_child_scroll_view.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -623,24 +599,6 @@
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="137" column="41" lean-forward="true" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
-          <folding>
-            <element signature="e#1#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -669,13 +627,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/bottom_navigation_bar_item.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/bottom_navigation_bar.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="185" column="27" lean-forward="false" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/contact.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/relation.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/share.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="43" column="43" lean-forward="true" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+        <state relative-caret-position="133">
+          <caret line="47" column="3" lean-forward="true" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/login/login.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="176" column="20" lean-forward="true" selection-start-line="176" selection-start-column="20" selection-end-line="176" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>

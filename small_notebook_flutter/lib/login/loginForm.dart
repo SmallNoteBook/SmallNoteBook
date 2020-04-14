@@ -169,19 +169,19 @@ class LoginFormState extends State<LoginForm> {
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              gradient: LinearGradient(
-                colors: <Color>[
-                  Color(0xFF0D47A1),
-                  Color(0xFF1976D2),
-                  Color(0xFF42A5F5),
-                ],
-              ),
+//              gradient: LinearGradient(
+//                colors: <Color>[
+//                  Color(0xFF0D47A1),
+//                  Color(0xFF1976D2),
+//                  Color(0xFF42A5F5),
+//                ],
+//              ),
             ),
             padding: const EdgeInsets.all(10.0),
             child: const Text('注册天网',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.black,
                 )),
           ),
         ),
@@ -190,19 +190,19 @@ class LoginFormState extends State<LoginForm> {
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              gradient: LinearGradient(
-                colors: <Color>[
-                  Color(0xFF0D47A1),
-                  Color(0xFF1976D2),
-                  Color(0xFF42A5F5),
-                ],
-              ),
+//              gradient: LinearGradient(
+//                colors: <Color>[
+//                  Color(0xFF0D47A1),
+//                  Color(0xFF1976D2),
+//                  Color(0xFF42A5F5),
+//                ],
+//              ),
             ),
             padding: const EdgeInsets.all(10.0),
             child: const Text('进入天网',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.black,
                 )),
           ),
         ),
