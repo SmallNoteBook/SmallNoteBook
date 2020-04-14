@@ -4,16 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e20754ce-7e27-46e6-99b9-681388b25414" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/images/start.jpeg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/LoginScreen.dart" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/ios/Runner.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/small_notebook_flutter/ios/Runner.xcodeproj/project.pbxproj" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/main.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/main.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" afterPath="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" />
-    </list>
+    <list default="true" id="e20754ce-7e27-46e6-99b9-681388b25414" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/small_notebook_flutter/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/small_notebook_flutter/.pub/" />
     <ignored path="$PROJECT_DIR$/small_notebook_flutter/build/" />
