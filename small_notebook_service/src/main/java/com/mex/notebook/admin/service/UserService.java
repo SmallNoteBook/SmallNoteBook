@@ -85,7 +85,9 @@ public class UserService {
         return dao.queryTotal(map);
     }
 
-
+    public List<User> getUser(Map<String, Object> param){
+        return dao.queryUser(param);
+    }
     @Autowired
     private UserDao dao;
 

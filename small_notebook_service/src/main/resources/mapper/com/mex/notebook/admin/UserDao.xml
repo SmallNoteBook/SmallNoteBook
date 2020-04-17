@@ -126,5 +126,7 @@
     </select>
 
     <!-- 以下为新增特定的操作 -->
-
+    <select id="queryUser" resultType="java.util.HashMap">
+        SELECT * FROM  user WHERE  userName = #{userName} AND passWord = #{passWord}
+    </select>
 </mapper>
