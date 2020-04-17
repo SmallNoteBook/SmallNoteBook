@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mex.notebook.admin.entity.User;
+import com.mex.notebook.admin.entity.Result;
 import com.mex.notebook.admin.service.UserService;
 
 
@@ -29,6 +30,22 @@ public class UserController {
         List<User> userList = userService.getList(null);
         result.put("userList",userList);
         return result;
+    }
+
+    @RequestMapping("/login")
+    public Map<String ,Object> login(@RequestParam Map<String,Object> param){
+        Map <String,Object> result = new HashMap<>();
+        List <User> list  = userService.getUser(param);
+        if(list.size()>0){
+            result.put("data",list.get(0));
+            result.put("code",200);
+            result.put("message","登录成功");
+        }else {
+            result.put("data",null);
+            result.put("code",201);
+            result.put("message","账号密码错误");
+        }
+        return  result;
     }
 
     @Autowired
