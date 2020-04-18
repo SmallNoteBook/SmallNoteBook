@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 public class Result implements Serializable {
 
-
-
     private Integer code;
 
     private  String message;
