@@ -36,27 +36,29 @@ class LoginFormState extends State<Login> {
     super.initState();
     this._username.text = 'JinVin';
 //    this._password.text = '123';
-    this._password = '10086';
+    this._password = '123';
   }
 
   void submitLogin() {
     // print('click me===>${this._username.text},${this._password.text}');
 //    print(_captcha.validate());
-    Widget snackBar(text){return new SnackBar(content: new Text(text));}
-    DioUtils.get(
-        'http://localhost:8080/admin/user/login',
-        params: {'userName':this._username.text,'passWord':_password},
-        onSuccess: (data){
-          print('data====>${data}');
-          if(data['code']==200){
+    Widget snackBar(text) {
+      return new SnackBar(content: new Text(text));
+    }
+
+    print('click me===>${this._username.text},${this._password}');
+    DioUtils.get('http://172.10.3.205:8080/admin/user/login',
+        params: {'userName': this._username.text, 'passWord': _password},
+        onSuccess: (data) {
+      print('data====>${data}');
+      if (data['code'] == 200) {
 //            _scaffoldkey.currentState.showSnackBar(snackBar('登录成功，正在跳转...'));
-            Navigator.pushNamed(context, '/home');
-          }else{
-            _scaffoldkey.currentState.showSnackBar(snackBar('登录失败，请校验账号密码'));
-          }
+        Navigator.pushNamed(context, '/home');
+      } else {
+        _scaffoldkey.currentState.showSnackBar(snackBar('登录失败，请校验账号密码'));
+      }
     });
 //    print('click me===>${this._username.text},${this._password},${this._captcha}');
-
   }
 
   Widget imgPanel() {
@@ -245,7 +247,7 @@ class LoginFormState extends State<Login> {
           ),
         ),
         GestureDetector(
-          onTap:  submitLogin,
+          onTap: submitLogin,
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -264,10 +266,10 @@ class LoginFormState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: _tabList.length,
-      child: ScaffoldLayout(
-        option: {
+    return  DefaultTabController(
+        length: _tabList.length,
+        child: ScaffoldLayout(
+          option: {
 //          'bottom': new TabBar(
 //            isScrollable: true,
 //            tabs: _tabList.map((Choice choice) {
@@ -277,23 +279,24 @@ class LoginFormState extends State<Login> {
 //              );
 //            }).toList(),
 //          ),
-          'key':_scaffoldkey,
-          'bottomNavigationBar': _bottomNavigationBar()
-        },
-        child: Padding(
-          padding: new EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 10.0),
-          child: new Column(
-            mainAxisSize: MainAxisSize.max,
-            //MainAxisAlignment：主轴方向上的对齐方式，会对child的位置起作用，默认是start。
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              imgPanel(),
-              formPanel(),
-              buttonPanel(),
-            ],
-          ),
+            'key': _scaffoldkey,
+            'bottomNavigationBar': _bottomNavigationBar()
+          },
+           child: SingleChildScrollView(child: Padding(
+              padding: new EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 10.0),
+              child: new Column(
+                mainAxisSize: MainAxisSize.max,
+                //MainAxisAlignment：主轴方向上的对齐方式，会对child的位置起作用，默认是start。
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  imgPanel(),
+                  formPanel(),
+                  buttonPanel(),
+                ],
+              ),
+            ),
+            ),
         ),
-      ),
-    );
+      );
   }
 }

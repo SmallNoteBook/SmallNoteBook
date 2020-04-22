@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mex.notebook.IMServer.NettyServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,20 @@ public class UserController {
         }
         return  result;
     }
+
+//    @RequestMapping("/connect")
+//    public Map<String ,Object> connect(@RequestParam Map<String,Object> param){
+//        NettyServer server = new NettyServer();
+//        server.setPort(7888);
+//        server.start();
+//
+////        Map <String,Object> result = new HashMap<>();
+////        result.put("data","JinVing");
+////        result.put("code",200);
+////        result.put("message","连接成功");
+////        return  result;
+//    }
+
 
     @Autowired
     private UserService userService;

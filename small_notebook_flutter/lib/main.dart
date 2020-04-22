@@ -2,12 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:notebook/login/loginForm.dart';
 import 'package:notebook/home/routes.dart';
 import 'package:notebook/signPage/routes.dart';
+import 'package:provider/provider.dart';
+import 'package:notebook/util/provider/SocketProvider.dart';
+import 'package:notebook/util/provider/initSocket.dart';
+void main(){
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(builder: (_)=>SocketProvider(),)],
+    child: MyApp(),
+  ));
+}
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  void initState(){
+
+  }
   @override
   Widget build(BuildContext context) {
+    new ClientSocket().connect(context);
     final Map<String, WidgetBuilder> _routes = {};
     _routes.addAll(HomeRoutes.routes);
     _routes.addAll(SignRoutes.routes);

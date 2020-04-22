@@ -36,6 +36,7 @@ class DioUtils {
   }) async {
     try {
       Response response = await Dio().get(url,queryParameters:params);
+      print('response----->${response}');
       if (response.statusCode == 200) {
         if (onSuccess != null) {
           onSuccess(response.data);

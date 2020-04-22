@@ -27,7 +27,8 @@ class ScaffoldLayout extends StatelessWidget {
 //                fit: BoxFit.cover
 //            ),
 //          ),
-            child: SingleChildScrollView(child: child),
+//            child: SingleChildScrollView(child: child),
+          child:child
           );
         }),
         bottomNavigationBar: this.option['bottomNavigationBar'] ?? null);
