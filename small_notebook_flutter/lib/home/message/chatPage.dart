@@ -360,9 +360,6 @@
 //  MessageEntity(this.own, this.msg);
 //}
 
-
-
-
 import 'dart:async';
 import 'dart:convert';
 
@@ -372,6 +369,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:notebook/util/provider/SocketProvider.dart';
 import 'package:provider/provider.dart';
+
 /// 聊天界面
 class ChatPage extends StatefulWidget {
   final arguments;
@@ -387,13 +385,12 @@ class ChatPageState extends State<ChatPage> {
   final arguments;
   ChatPageState(this.arguments);
   var userInfo;
-  bool soundRecording = false;      // 是否显示语音按钮
-  double _height = 0;               // 控制操作栏的高度
+  bool soundRecording = false; // 是否显示语音按钮
+  double _height = 0; // 控制操作栏的高度
   var localSocket;
-  var localImage, localVideo;       // 本地图片和视频
-  var audioPath;                    // 语音路径
+  var localImage, localVideo; // 本地图片和视频
+  var audioPath; // 语音路径
   var duration = Duration(milliseconds: 200);
-
 
   // 输入框
   TextEditingController _textEditingController;
@@ -412,7 +409,6 @@ class ChatPageState extends State<ChatPage> {
     _textEditingController = TextEditingController();
     _scrollController = ScrollController();
 //    recordPlugin =  FlutterPluginRecord();
-
   }
 
   @override
@@ -440,20 +436,28 @@ class ChatPageState extends State<ChatPage> {
 //  }
 
   // 发送消息
-  void _sendMsg(String msg) {
+  void _sendMsg(String msg, SocketProvider socketProvider) {
+    Map contentArguments = {
+      'type': 'private_chat',
+      'content_type': 'text',
+      'Content': msg,
+      'recv_id': arguments['recv_id']
+    };
     // 存储文字消息
-    Provider.of<SocketProvider>(context, listen: false).setRecords(msg,'text', true);
-    _scrollController.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.linear);
+    Provider.of<SocketProvider>(context, listen: false).setRecords(msg, 'text', true);
+    _scrollController.animateTo(0.0,duration: Duration(milliseconds: 300), curve: Curves.linear);
+    // socket发送消息
+    socketProvider.socket.write(json.encode(contentArguments));
   }
 
-  startRecord(){
+  startRecord() {
     print("111开始录制");
   }
 
-  stopRecord(String path,double audioTimeLength ) async {
+  stopRecord(String path, double audioTimeLength) async {
     print("结束束录制");
-    print("音频文件位置"+path);
-    print("音频录制时长"+audioTimeLength.toString());
+    print("音频文件位置" + path);
+    print("音频录制时长" + audioTimeLength.toString());
     setState(() {
       this.audioPath = path;
     });
@@ -474,16 +478,24 @@ class ChatPageState extends State<ChatPage> {
 //      Provide.value<SocketProvider>(context).setRecords(path,'audio', true, time_length:audioTimeLength.toString());
 //
 //    });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(icon: Icon(IconData(0xe622, fontFamily: 'myIcon'), size: 40.0,), onPressed: ()=>Navigator.pop(context),),
+          leading: IconButton(
+            icon: Icon(
+              IconData(0xe622, fontFamily: 'myIcon'),
+              size: 40.0,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
           title: Container(
-            child:  Text('${arguments['nickname']}', style: TextStyle(fontSize: 35.0),),
+            child: Text(
+              '${arguments['nickname']}',
+              style: TextStyle(fontSize: 35.0),
+            ),
           ),
           centerTitle: true,
           // backgroundColor: Colors.grey[200],
@@ -491,7 +503,7 @@ class ChatPageState extends State<ChatPage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.people),
-              onPressed: (){
+              onPressed: () {
                 print('更多');
               },
             )
@@ -499,10 +511,10 @@ class ChatPageState extends State<ChatPage> {
         ),
         backgroundColor: Colors.grey[200],
         body: Consumer<SocketProvider>(
-          builder: (context,socketProvider, child){
+          builder: (context, socketProvider, child) {
             return Container(
               color: Colors.white,
-              child:  Column(
+              child: Column(
                 children: <Widget>[
                   Divider(
                     height: 0.5,
@@ -549,26 +561,22 @@ class ChatPageState extends State<ChatPage> {
                           slivers: <Widget>[
                             SliverList(
                               delegate: SliverChildBuilderDelegate(
-                                    (context, index) {
-                                  return _buildMsg(socketProvider.records[index]);
+                                (context, index) {
+                                  return _buildMsg(
+                                      socketProvider.records[index]);
                                 },
                                 childCount: socketProvider.records.length,
                               ),
                             ),
                           ],
-                          onLoad: () async {
-
-
-                          },
+                          onLoad: () async {},
                         ),
-                        onTap: (){
+                        onTap: () {
                           setState(() {
                             _height = 0;
                           });
                         },
-                      )
-                  ),
-
+                      )),
                   SafeArea(
                     child: Container(
                       color: Colors.grey[100],
@@ -582,13 +590,16 @@ class ChatPageState extends State<ChatPage> {
                         children: <Widget>[
                           InkWell(
                             child: Container(
-                              margin: EdgeInsets.only(right:10),
+                              margin: EdgeInsets.only(right: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              child: Icon(Icons.keyboard_voice, color: Colors.grey,),
+                              child: Icon(
+                                Icons.keyboard_voice,
+                                color: Colors.grey,
+                              ),
                             ),
-                            onTap: (){
+                            onTap: () {
                               setState(() {
                                 this._height = 0;
                                 this.localSocket = socketProvider.socket;
@@ -626,16 +637,15 @@ class ChatPageState extends State<ChatPage> {
                                   ),
                                   border: InputBorder.none,
                                 ),
-                                onChanged: (val){
-
-                                },
+                                onChanged: (val) {},
                                 onSubmitted: (value) {
                                   if (_textEditingController.text.isNotEmpty) {
-                                    _sendMsg(_textEditingController.text);
+                                    _sendMsg(_textEditingController.text,
+                                        socketProvider);
                                     _textEditingController.text = '';
                                   }
                                 },
-                                onTap: (){
+                                onTap: () {
                                   setState(() {
                                     _height = 0;
                                   });
@@ -647,15 +657,18 @@ class ChatPageState extends State<ChatPage> {
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 15),
                               decoration: BoxDecoration(
-                                // color: Colors.grey,
+                                  // color: Colors.grey,
                                   borderRadius: BorderRadius.circular(50),
-                                  border: Border.all(width:0.5, color: Colors.grey)
+                                  border: Border.all(
+                                      width: 0.5, color: Colors.grey)),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.grey,
                               ),
-                              child: Icon(Icons.add, color: Colors.grey,),
                             ),
-                            onTap: (){
+                            onTap: () {
                               // 收起键盘
-                              FocusScope.of(context).requestFocus(FocusNode());
+                              // FocusScope.of(context).requestFocus(FocusNode());
                               setState(() {
                                 this.soundRecording = false;
                                 _height = 100;
@@ -665,22 +678,15 @@ class ChatPageState extends State<ChatPage> {
                           // :
                           InkWell(
                             onTap: () {
-                              if(_textEditingController.text.isEmpty){
+                              if (_textEditingController.text.isEmpty) {
                                 return;
                               }
-                              Map contentArguments = {
-                                'type':'private_chat',
-                                'content_type':'text',
-                                'Content':_textEditingController.text,
-                                'recv_id':arguments['recv_id']
-                              };
-                              print(contentArguments);
+
                               if (_textEditingController.text.isNotEmpty) {
-                                _sendMsg(_textEditingController.text);
+                                _sendMsg(_textEditingController.text,socketProvider);
                                 _textEditingController.text = '';
                               }
-                              // socket发送消息
-                              socketProvider.socket.write(json.encode(contentArguments));
+
                             },
                             child: Container(
                               height: 30.0,
@@ -702,9 +708,7 @@ class ChatPageState extends State<ChatPage> {
                                 '发送',
                                 // S.of(context).send,
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20
-                                ),
+                                    color: Colors.white, fontSize: 20),
                               ),
                             ),
                           ),
@@ -719,15 +723,15 @@ class ChatPageState extends State<ChatPage> {
                       color: Colors.white,
                       child: Container(
                           child: GridView(
-                            padding: EdgeInsets.zero,
-                            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                maxCrossAxisExtent: 120.0,
-                                childAspectRatio: 1.0 //宽高比为2
+                        padding: EdgeInsets.zero,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 120.0,
+                            childAspectRatio: 1.0 //宽高比为2
                             ),
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(Icons.camera_alt),
-                                onPressed: () async {
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.camera_alt),
+                            onPressed: () async {
 //                                  var img_url = await Plugins.takePhoto();
 //                                  if(img_url!=null){
 //                                    setState(() {
@@ -747,12 +751,13 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.photo),
-                                onPressed: () async {
-                                  print('---------------------选择图片---------------------');
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.photo),
+                            onPressed: () async {
+                              print(
+                                  '---------------------选择图片---------------------');
 //                                  var img_url = await Plugins.openGallery();
 //                                  if(img_url!=null){
 //                                    setState(() {
@@ -775,12 +780,12 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.videocam),
-                                onPressed: () async {
-                                  print('录像');
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.videocam),
+                            onPressed: () async {
+                              print('录像');
 //                                  var video_url = await Plugins.takeVideo();
 //                                  if(video_url!=null){
 //                                    setState(() {
@@ -800,12 +805,12 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(Icons.movie),
-                                onPressed: () async {
-                                  print('发送视频');
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.movie),
+                            onPressed: () async {
+                              print('发送视频');
 //                                  var video_url = await Plugins.getVideo();
 //                                  //  print(video_url);
 //                                  if(video_url!=null){
@@ -827,20 +832,15 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                                },
-                              ),
-                            ],
-                          )
-                      )
-                  ),
+                            },
+                          ),
+                        ],
+                      ))),
                 ],
-              )
-              ,
+              ),
             );
-
           },
-        )
-    );
+        ));
   }
 
   // 构建消息视图
@@ -866,17 +866,16 @@ class ChatPageState extends State<ChatPage> {
                     ),
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: entity.type == 'text' || entity.type == 'audio' ? Color(0xff4ADDFE) : null,
+                      color: entity.type == 'text' || entity.type == 'audio'
+                          ? Color(0xff4ADDFE)
+                          : null,
                       borderRadius: BorderRadius.all(Radius.circular(
                         4.0,
                       )),
                     ),
-                    constraints: BoxConstraints(
-                        maxWidth: 300.0,
-                        maxHeight: 300.0
-                    ),
-                    child: MessageWidget(entity)
-                )
+                    constraints:
+                        BoxConstraints(maxWidth: 300.0, maxHeight: 300.0),
+                    child: MessageWidget(entity))
               ],
             ),
             Card(
@@ -937,7 +936,9 @@ class ChatPageState extends State<ChatPage> {
                     ),
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: entity.type == 'text' || entity.type == 'audio' ? Colors.black12 : null,
+                      color: entity.type == 'text' || entity.type == 'audio'
+                          ? Colors.black12
+                          : null,
                       borderRadius: BorderRadius.all(Radius.circular(
                         4.0,
                       )),
@@ -945,8 +946,7 @@ class ChatPageState extends State<ChatPage> {
                     constraints: BoxConstraints(
                       maxWidth: 300.0,
                     ),
-                    child: MessageWidget(entity)
-                )
+                    child: MessageWidget(entity))
               ],
             ),
           ],
@@ -956,7 +956,7 @@ class ChatPageState extends State<ChatPage> {
   }
 
   // 判断显示什么类型的消息
-  Widget MessageWidget(entity){
+  Widget MessageWidget(entity) {
     switch (entity.type) {
       case 'text':
         return Text(
@@ -969,48 +969,44 @@ class ChatPageState extends State<ChatPage> {
         );
         break;
       case 'img':
-        return entity.newIsMe  ?
-        InkWell(
-          child: Image.file(entity.message),
-          onTap: (){
-            print('点了图片');
-            Map arguments = {
-              'imageProvider':FileImage(entity.message),
-              'heroTag':'simple'
-            };
-            Navigator.pushNamed(context, '/image', arguments: arguments);
-          },
-        )
-            :
-        InkWell(
+        return entity.newIsMe
+            ? InkWell(
+                child: Image.file(entity.message),
+                onTap: () {
+                  print('点了图片');
+                  Map arguments = {
+                    'imageProvider': FileImage(entity.message),
+                    'heroTag': 'simple'
+                  };
+                  Navigator.pushNamed(context, '/image', arguments: arguments);
+                },
+              )
+            : InkWell(
 //          child: Image.network('$base_url${entity.message}'),
-          onTap: (){
-            Map arguments = {
+                onTap: () {
+                  Map arguments = {
 //              'imageProvider':NetworkImage('$base_url${entity.message}'),
-              'heroTag':'simple'
-            };
-            Navigator.pushNamed(context, '/image', arguments: arguments);
-          },
-        );
+                    'heroTag': 'simple'
+                  };
+                  Navigator.pushNamed(context, '/image', arguments: arguments);
+                },
+              );
         break;
       case 'video':
-        return  InkWell(
+        return InkWell(
           child: Container(
             width: 300,
-            height:150,
+            height: 150,
             decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(10)
-            ),
+                color: Colors.grey, borderRadius: BorderRadius.circular(10)),
             alignment: Alignment.center,
-            child: Icon(Icons.play_arrow, color: Colors.white,),
+            child: Icon(
+              Icons.play_arrow,
+              color: Colors.white,
+            ),
           ),
-          onTap: (){
-            Map arguments = {
-              'isMe':entity.newIsMe,
-              'message':entity.message
-            };
-
+          onTap: () {
+            Map arguments = {'isMe': entity.newIsMe, 'message': entity.message};
 
             Navigator.pushNamed(context, '/video', arguments: arguments);
           },
@@ -1019,52 +1015,53 @@ class ChatPageState extends State<ChatPage> {
       case 'audio':
         return Container(
             width: 160,
-            child: entity.newIsMe ?
-            InkWell(
-              onTap: (){
-
-                playByPath(entity.message);
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('${entity.time_length}'),
-                  Container(
-                    margin: EdgeInsets.only(left: 10),
-                    width: 50,
-                    height:30,
-                    // color: Colors.red,
-                    child: Image.asset('assets/images/recording_right.png', fit: BoxFit.cover,),
+            child: entity.newIsMe
+                ? InkWell(
+                    onTap: () {
+                      playByPath(entity.message);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('${entity.time_length}'),
+                        Container(
+                          margin: EdgeInsets.only(left: 10),
+                          width: 50,
+                          height: 30,
+                          // color: Colors.red,
+                          child: Image.asset(
+                            'assets/images/recording_right.png',
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ],
+                    ),
                   )
-                ],
-              ),
-            )
-                :
-            InkWell(
-              onTap: (){
-                // socket发送来的语音
+                : InkWell(
+                    onTap: () {
+                      // socket发送来的语音
 //                playByPath('$base_url${entity.message}');
-              },
-              child: Row(
-                children: <Widget>[
-                  Text('${entity.time_length}'),
-                  Container(
-                    margin: EdgeInsets.only(left:10),
-                    width: 50,
-                    height: 30,
-                    // color: Colors.red,
-                    child: Image.asset('assets/images/recording_left.png', fit: BoxFit.cover,),
-                  )
-                ],
-              ),
-            )
-
-        );
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Text('${entity.time_length}'),
+                        Container(
+                          margin: EdgeInsets.only(left: 10),
+                          width: 50,
+                          height: 30,
+                          // color: Colors.red,
+                          child: Image.asset(
+                            'assets/images/recording_left.png',
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ],
+                    ),
+                  ));
         break;
       default:
     }
   }
-
 
   ///播放指定路径录音文件
   void playByPath(String path) {
@@ -1073,8 +1070,6 @@ class ChatPageState extends State<ChatPage> {
 
   // dio上传文件FormData格式
   Future<FormData> FormData1(fileUrl) async {
-    return FormData.fromMap({
-      "file": await MultipartFile.fromFile(fileUrl)
-    });
+    return FormData.fromMap({"file": await MultipartFile.fromFile(fileUrl)});
   }
 }

@@ -25,7 +25,7 @@ class HomeState extends State<Home> {
     const Choice(title: '分享', icon: Icons.share),
   ];
 
-  Widget _bottomNavigationBar(){
+  Widget _bottomNavigationBar() {
     return BottomNavigationBar(
       items: _tabList.map((Choice choice) {
         return new BottomNavigationBarItem(
@@ -64,11 +64,11 @@ class HomeState extends State<Home> {
 //              );
 //            }).toList(),
 //          ),
-          'bottomNavigationBar':_bottomNavigationBar()
+          'bottomNavigationBar': _bottomNavigationBar()
         },
         child: [
-          new ChatPage({'nickname':'jv'}),
-//          new Message(),
+          new ChatPage({'nickname': 'jv'}),
+          //new Message(),
           new Contact(),
           new Relation(),
           new Share()

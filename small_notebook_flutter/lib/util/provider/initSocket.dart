@@ -8,9 +8,10 @@ import 'package:provider/provider.dart';
 import 'package:connectivity/connectivity.dart';
 
 class ClientSocket {
-  String host = 'baidu.com';
-
-  int port = 80;
+  String host = '172.10.3.205';
+  // String host = '0.0.0.0';
+  // String host = '127.0.0.1';
+  int port = 7888;
 
   dynamic localSocket; // 拿到socket实例，存储到provide中，便于其他页面使用socket的方法
 
@@ -29,9 +30,9 @@ class ClientSocket {
   bool socketStatus = false; // socket状态
 
   void connect(context) async {
-    print("---------connect-----");
+    await Socket.connect('172.10.3.205', 7888).then((socket) async {
+      print("---------connect success-----");
 
-    await Socket.connect(host, port).then((socket) {
       socketStatus = true;
 
       localSocket = socket;
@@ -55,7 +56,7 @@ class ClientSocket {
           cancelOnError: false);
       // gl_sock.close();
     }).catchError((e) {
-      print("socket无法连接: $e");
+      // print("socket无法连接: $e");
     });
   }
 

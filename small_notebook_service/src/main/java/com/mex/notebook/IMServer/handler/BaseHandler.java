@@ -12,12 +12,13 @@ public class BaseHandler extends ChannelInboundHandlerAdapter {
         try {
             ByteBuf buf = (ByteBuf)msg;
             //创建目标大小的数组
+            System.out.println(buf);
             byte[] barray = new byte[buf.readableBytes()];
+            System.out.println(barray);
             //把数据从bytebuf转移到byte[]
             buf.getBytes(0,barray);
             //将byte[]转成字符串用于打印
             String str=new String(barray);
-
             if (str.length()>0)
             {
                 System.out.println(str);

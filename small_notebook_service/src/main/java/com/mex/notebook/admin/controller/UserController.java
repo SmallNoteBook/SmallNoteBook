@@ -48,21 +48,27 @@ public class UserController {
         return  result;
     }
 
-//    @RequestMapping("/connect")
-//    public Map<String ,Object> connect(@RequestParam Map<String,Object> param){
-//        NettyServer server = new NettyServer();
-//        server.setPort(7888);
-//        server.start();
-//
-////        Map <String,Object> result = new HashMap<>();
-////        result.put("data","JinVing");
-////        result.put("code",200);
-////        result.put("message","连接成功");
-////        return  result;
-//    }
+    @RequestMapping("/nettyStart")
+    public void nettyStart(@RequestParam Map<String,Object> param){
+        NettyServer server = new NettyServer();
+        server.setPort(7888);
+        server.start();
+    }
 
+//    public static  void threadSocket(){
+//        Thread t =  new Thread(){
+//            @Override
+//           public void run (){
+//                NettyServer server = new NettyServer();
+//                server.setPort(7888);
+//                server.start();
+//            }
+//        };
+//        t.start();
+//    }
 
     @Autowired
     private UserService userService;
 
 }
+

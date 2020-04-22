@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:web_socket_channel/io.dart';
 
 class Message extends StatefulWidget {
@@ -13,16 +14,20 @@ class MessageState extends State<Message> {
   List _list = new List();
   @override
   void initState() {
-    //创建websocket连接
-    channel = new IOWebSocketChannel.connect('ws://echo.websocket.org');
+    // //创建websocket连接
+    // channel = new IOWebSocketChannel.connect('ws://echo.websocket.org');
 
-    // 监听消息
-    channel.stream.listen((message) {
-      print(message);
-      setState(() {
-        _list.add('[Received] ${message.toString()}');
-      });
-    });
+    // // 监听消息
+    // channel.stream.listen((message) {
+    //   print(message);
+    //   setState(() {
+    //     _list.add('[Received] ${message.toString()}');
+    //   });
+    // });
+    // print('开始连接------');
+    // Socket.connect('172.10.3.205', 7888).then((socket) {
+    //   print('连接成功------');
+    // });
   }
 
   void _sendMessage() {
@@ -42,7 +47,7 @@ class MessageState extends State<Message> {
   Widget _generatorForm() {
     return Column(
       children: <Widget>[
-        TextField(onChanged: (text)=>this._text=text),
+        TextField(onChanged: (text) => this._text = text),
         SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -75,8 +80,6 @@ class ListItem extends StatelessWidget {
     return Text(msg);
   }
 }
-
-
 
 //import 'package:flutter/material.dart';
 //

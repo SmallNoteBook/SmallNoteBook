@@ -29,14 +29,13 @@ class DioUtils {
 
   ///Get请求测试
   static void get(
-      String url,{
-        params,
-        Function onSuccess,
-        Function(String error) onError,
+    String url, {
+    params,
+    Function onSuccess,
+    Function(String error) onError,
   }) async {
     try {
-      Response response = await Dio().get(url,queryParameters:params);
-      print('response----->${response}');
+      Response response = await Dio().get(url, queryParameters: params);
       if (response.statusCode == 200) {
         if (onSuccess != null) {
           onSuccess(response.data);
