@@ -16,6 +16,10 @@
     <el-row>
         <el-button type="primary" @click="init">获取用户</el-button>
     </el-row>
+    <br />
+    <el-row>
+        <el-button type="primary" @click="nettyStart">启动netty 服务</el-button>
+    </el-row>
 </div>
 <script>
     var app = new Vue({
@@ -29,6 +33,12 @@
             },
             init(){
                 $.post('/admin/user/list',{},function (text) {
+                    this.msg = JSON.stringify(text)
+                    alert(this.msg);
+                })
+            },
+            nettyStart(){
+                $.post('/admin/user/nettyStart',{},function (text) {
                     this.msg = JSON.stringify(text)
                     alert(this.msg);
                 })

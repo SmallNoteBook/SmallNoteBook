@@ -2,8 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:notebook/login/loginForm.dart';
 import 'package:notebook/home/routes.dart';
 import 'package:notebook/signPage/routes.dart';
+import 'package:provider/provider.dart';
+import 'package:notebook/util/provider/SocketProvider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        builder: (_) => SocketProvider(),
+      )
+    ],
+    child: MyApp(),
+  ));
+}
+
+// void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override

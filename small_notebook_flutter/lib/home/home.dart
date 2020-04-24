@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:notebook/components/ScaffoldLayout.dart';
-import 'message.dart';
+import 'package:notebook/home/message/message.dart';
 import 'contact.dart';
 import 'relation.dart';
 import 'share.dart';
+import 'package:notebook/home/message/chatPage.dart';
 
 class Choice {
   const Choice({this.title, this.icon});
@@ -24,7 +25,7 @@ class HomeState extends State<Home> {
     const Choice(title: '分享', icon: Icons.share),
   ];
 
-  Widget _bottomNavigationBar(){
+  Widget _bottomNavigationBar() {
     return BottomNavigationBar(
       items: _tabList.map((Choice choice) {
         return new BottomNavigationBarItem(
@@ -63,9 +64,15 @@ class HomeState extends State<Home> {
 //              );
 //            }).toList(),
 //          ),
-          'bottomNavigationBar':_bottomNavigationBar()
+          'bottomNavigationBar': _bottomNavigationBar()
         },
-        child: [new Message(),new Contact(),new Relation(),new Share()].elementAt(_selectedIndex),
+        child: [
+          new ChatPage({'nickname': 'jv'}),
+          //new Message(),
+          new Contact(),
+          new Relation(),
+          new Share()
+        ].elementAt(_selectedIndex),
       ),
     );
   }
