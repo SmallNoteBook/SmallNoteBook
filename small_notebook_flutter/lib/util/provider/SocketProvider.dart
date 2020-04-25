@@ -8,6 +8,7 @@ class SocketProvider with ChangeNotifier {
   Socket socket; // 存储socket实例
   String netWorkstate = 'none'; // 网络状态
   List<ChatRecord> records = List<ChatRecord>();
+  List contact = List();
 
 // 存储socket实例
   setSocket(val) {
@@ -17,18 +18,15 @@ class SocketProvider with ChangeNotifier {
 
 // 存储发送来的消息
 // 私聊消息，消息类型, 是不是我发送的，语音时间长度, 是否需要显示成网络信息， 是不是历史记录存储
-  setRecords(message, String type, bool newIsMe,
-      {String time_length, history: false}) {
-    records
-      ..insert(
-          0,
-          ChatRecord(
-              message: message,
-              type: type,
-              newIsMe: newIsMe,
-              time_length: time_length));
+  setRecords(message, String type, bool newIsMe,{String time_length, history: false}) {
+    records..insert(0,ChatRecord(message: message,type: type,newIsMe: newIsMe,time_length: time_length));
     notifyListeners();
   }
+
+  //更新联系人
+  setContact(List list){
+    this.contact = list;
+}
 
 // 清空消息页面
   clearRecords() {

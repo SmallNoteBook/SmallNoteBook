@@ -29,6 +29,7 @@ dependencies:
   flutter_spinkit: 4.1.2
   provider: ^3.2.0
   connectivity: ^0.3.2
+  shared_preferences: ^0.4.2
 
 dev_dependencies:
   flutter_test:

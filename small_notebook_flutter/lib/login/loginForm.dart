@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:notebook/util/dioUtil/dioUtil.dart';
 import 'package:notebook/components/ScaffoldLayout.dart';
 import 'package:notebook/util/provider/initSocket.dart';
+import 'package:notebook/util/localStorage/Storage.dart';
 
 class Choice {
   const Choice({this.title, this.icon});
@@ -49,11 +51,11 @@ class LoginFormState extends State<Login> {
     DioUtils.get('http://172.10.3.205:8080/admin/user/login',
         params: {'userName': this._username.text, 'passWord': _password},
         onSuccess: (data) {
-      // print('data====>${data}');
       if (data['code'] == 200) {
-        new ClientSocket().connect(context);
-        // _scaffoldkey.currentState.showSnackBar(snackBar('登录成功，正在跳转...'));
-        Navigator.pushNamed(context, '/home');
+         Storage.set("userInfo", data['data']).then((val){
+           new ClientSocket().connect(context);
+           Navigator.pushNamed(context, '/home');
+         });
       } else {
         _scaffoldkey.currentState.showSnackBar(snackBar('登录失败，请校验账号密码'));
       }

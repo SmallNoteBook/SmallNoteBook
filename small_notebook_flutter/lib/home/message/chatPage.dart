@@ -1,364 +1,3 @@
-//import 'dart:async';
-//
-//import 'package:flutter/material.dart';
-//import 'package:flutter_easyrefresh/easy_refresh.dart';
-////import 'package:example/generated/i18n.dart';
-//import 'package:flutter_spinkit/flutter_spinkit.dart';
-//
-///// 聊天界面示例
-//class ChatPage extends StatefulWidget {
-//  @override
-//  ChatPageState createState() {
-//    return ChatPageState();
-//  }
-//}
-//
-//class ChatPageState extends State<ChatPage> {
-//  // 信息列表
-//  List<MessageEntity> _msgList;
-//
-//  // 输入框
-//  TextEditingController _textEditingController;
-//  // 滚动控制器
-//  ScrollController _scrollController;
-//
-//  @override
-//  void initState() {
-//    super.initState();
-//    _msgList = [
-//      MessageEntity(true, "It's good!"),
-//      MessageEntity(false, 'EasyRefresh'),
-//    ];
-//    _textEditingController = TextEditingController();
-//    _textEditingController.addListener(() {
-//      setState(() {});
-//    });
-//    _scrollController = ScrollController();
-//  }
-//
-//  @override
-//  void dispose() {
-//    super.dispose();
-//    _textEditingController.dispose();
-//    _scrollController.dispose();
-//  }
-//
-//  // 发送消息
-//  void _sendMsg(String msg) {
-//    setState(() {
-//      _msgList.insert(0, MessageEntity(true, msg));
-//    });
-//    _scrollController.animateTo(0.0,
-//        duration: Duration(milliseconds: 300), curve: Curves.linear);
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(
-//        title: Text('KnoYo'),
-//        centerTitle: false,
-//        backgroundColor: Colors.grey[200],
-//        elevation: 0.0,
-//        actions: <Widget>[
-//          IconButton(
-//            icon: Icon(Icons.more_horiz),
-//            onPressed: () {},
-//          ),
-//        ],
-//      ),
-//      backgroundColor: Colors.grey[200],
-//      body: Column(
-//        children: <Widget>[
-//          Divider(
-//            height: 0.5,
-//          ),
-//          Expanded(
-//            flex: 1,
-//            child: EasyRefresh.custom(
-//              scrollController: _scrollController,
-//              reverse: true,
-//              footer: CustomFooter(
-//                  enableInfiniteLoad: true,
-//                  extent: 40.0,
-//                  triggerDistance: 50.0,
-//                  footerBuilder: (context,
-//                      loadState,
-//                      pulledExtent,
-//                      loadTriggerPullDistance,
-//                      loadIndicatorExtent,
-//                      axisDirection,
-//                      float,
-//                      completeDuration,
-//                      enableInfiniteLoad,
-//                      success,
-//                      noMore) {
-//                    return Stack(
-//                      children: <Widget>[
-//                        Positioned(
-//                          bottom: 0.0,
-//                          left: 0.0,
-//                          right: 0.0,
-//                          child: Container(
-//                            width: 30.0,
-//                            height: 30.0,
-//                            child: SpinKitCircle(
-//                              color: Colors.green,
-//                              size: 30.0,
-//                            ),
-//                          ),
-//                        ),
-//                      ],
-//                    );
-//                  }),
-//              slivers: <Widget>[
-//                SliverList(
-//                  delegate: SliverChildBuilderDelegate(
-//                    (context, index) {
-//                      return _buildMsg(_msgList[index]);
-//                    },
-//                    childCount: _msgList.length,
-//                  ),
-//                ),
-//              ],
-//              onLoad: () async {
-//                await Future.delayed(Duration(seconds: 2), () {
-//                  if (mounted) {
-//                    setState(() {
-//                      _msgList.addAll([
-//                        MessageEntity(true, "It's good!"),
-//                        MessageEntity(false, 'EasyRefresh'),
-//                      ]);
-//                    });
-//                  }
-//                });
-//              },
-//            ),
-//          ),
-//          SafeArea(
-//            child: Container(
-//              color: Colors.grey[100],
-//              padding: EdgeInsets.only(
-//                left: 15.0,
-//                right: 15.0,
-//                top: 8.0,
-//                bottom: 8.0,
-//              ),
-//              child: Row(
-//                children: <Widget>[
-//                  Expanded(
-//                    flex: 1,
-//                    child: Container(
-//                      padding: EdgeInsets.only(
-//                        left: 5.0,
-//                        right: 5.0,
-//                      ),
-//                      decoration: BoxDecoration(
-//                        color: Colors.white,
-//                        borderRadius: BorderRadius.all(Radius.circular(
-//                          4.0,
-//                        )),
-//                      ),
-//                      child: TextField(
-//                        controller: _textEditingController,
-//                        decoration: InputDecoration(
-////                          contentPadding: EdgeInsets.only(
-////                            top: 2.0,
-////                            bottom: 2.0,
-////                          ),
-//                          border: InputBorder.none,
-//                        ),
-//                        onSubmitted: (value) {
-//                          if (_textEditingController.text.isNotEmpty) {
-//                            _sendMsg(_textEditingController.text);
-//                            _textEditingController.text = '';
-//                          }
-//                        },
-//                      ),
-//                    ),
-//                  ),
-//                  InkWell(
-//                    onTap: () {
-//                      if (_textEditingController.text.isNotEmpty) {
-//                        _sendMsg(_textEditingController.text);
-//                        _textEditingController.text = '';
-//                      }
-//                    },
-//                    child: Container(
-//                      height: 30.0,
-//                      width: 60.0,
-//                      alignment: Alignment.center,
-//                      margin: EdgeInsets.only(
-//                        left: 15.0,
-//                      ),
-//                      decoration: BoxDecoration(
-//                        color: _textEditingController.text.isEmpty
-//                            ? Colors.grey
-//                            : Colors.green,
-//                        borderRadius: BorderRadius.all(Radius.circular(
-//                          4.0,
-//                        )),
-//                      ),
-//                      child: Text(
-////                        S.of(context).send,
-//                        '发送',
-//                        style: TextStyle(
-//                          color: Colors.white,
-//                          fontSize: 16.0,
-//                        ),
-//                      ),
-//                    ),
-//                  ),
-//                ],
-//              ),
-//            ),
-//          ),
-//        ],
-//      ),
-//    );
-//  }
-//
-//  // 构建消息视图
-//  Widget _buildMsg(MessageEntity entity) {
-//    if (entity == null || entity.own == null) {
-//      return Container();
-//    }
-//    if (entity.own) {
-//      return Container(
-//        margin: EdgeInsets.all(
-//          10.0,
-//        ),
-//        child: Row(
-//          mainAxisAlignment: MainAxisAlignment.end,
-//          crossAxisAlignment: CrossAxisAlignment.start,
-//          children: <Widget>[
-//            Column(
-//              crossAxisAlignment: CrossAxisAlignment.end,
-//              children: <Widget>[
-////                Text(
-////                  'bala bala ...  me',
-////                  style: TextStyle(
-////                    color: Colors.grey,
-////                    fontSize: 13.0,
-////                  ),
-////                ),
-//                Container(
-////                  margin: EdgeInsets.only(
-////                    top: 1.0,
-////                  ),
-//                  padding: EdgeInsets.all(10.0),
-//                  decoration: BoxDecoration(
-//                    color: Colors.lightGreen,
-//                    borderRadius: BorderRadius.all(Radius.circular(
-//                      4.0,
-//                    )),
-//                  ),
-//                  constraints: BoxConstraints(
-//                    maxWidth: 200.0,
-//                  ),
-//                  child: Text(
-//                    entity.msg ?? '',
-//                    overflow: TextOverflow.clip,
-//                    style: TextStyle(
-//                      fontSize: 16.0,
-//                    ),
-//                  ),
-//                )
-//              ],
-//            ),
-//            Card(
-//              margin: EdgeInsets.only(
-//                left: 10.0,
-//              ),
-//              clipBehavior: Clip.hardEdge,
-//              shape: RoundedRectangleBorder(
-//                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//              ),
-//              elevation: 0.0,
-//              child: Container(
-//                height: 40.0,
-//                width: 40.0,
-//                child: Image.asset('assets/image/head.jpg'),
-//              ),
-//            ),
-//          ],
-//        ),
-//      );
-//    } else {
-//      return Container(
-//        decoration: BoxDecoration(
-//          color: Colors.cyan
-//        ),
-//        margin: EdgeInsets.all(
-//          10.0,
-//        ),
-//        child: Row(
-//          mainAxisAlignment: MainAxisAlignment.start,
-//          crossAxisAlignment: CrossAxisAlignment.start,
-//          children: <Widget>[
-//            Card(
-//              margin: EdgeInsets.only(
-//                right: 10.0,
-//              ),
-//              clipBehavior: Clip.hardEdge,
-//              shape: RoundedRectangleBorder(
-//                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-//              ),
-//              elevation: 0.0,
-//              child: Container(
-//                height: 40.0,
-//                width: 40.0,
-//                child: Image.asset('images/login3.jpeg'),
-//              ),
-//            ),
-//            Column(
-//              crossAxisAlignment: CrossAxisAlignment.start,
-//              children: <Widget>[
-////                Text(
-////                  'KnoYo',
-////                  style: TextStyle(
-////                    color: Colors.grey,
-////                    fontSize: 13.0,
-////                  ),
-////                ),
-//                Container(
-////                  margin: EdgeInsets.only(
-////                    top: 1.0,
-////                  ),
-//                  padding: EdgeInsets.all(10.0),
-//                  decoration: BoxDecoration(
-//                    color: Colors.white,
-//                    borderRadius: BorderRadius.all(Radius.circular(
-//                      4.0,
-//                    )),
-//                  ),
-//                  constraints: BoxConstraints(
-//                    maxWidth: 200.0,
-//                  ),
-//                  child: Text(
-//                    entity.msg ?? '',
-//                    overflow: TextOverflow.clip,
-//                    style: TextStyle(
-//                      fontSize: 16.0,
-//                    ),
-//                  ),
-//                )
-//              ],
-//            ),
-//          ],
-//        ),
-//      );
-//    }
-//  }
-//}
-//
-///// 信息实体
-//class MessageEntity {
-//  bool own;
-//  String msg;
-//
-//  MessageEntity(this.own, this.msg);
-//}
 
 import 'dart:async';
 import 'dart:convert';
@@ -369,16 +8,24 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:notebook/util/provider/SocketProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:notebook/components/ScaffoldLayout.dart';
+import 'package:notebook/util/localStorage/Storage.dart';
 
 /// 聊天界面
 class ChatPage extends StatefulWidget {
   final arguments;
-  ChatPage(this.arguments);
+  ChatPage({Key key, this.arguments}) : super(key: key) {
+    print("-------------------");
+    print(this.arguments);
+  }
+
   @override
   ChatPageState createState() {
     return ChatPageState(this.arguments);
   }
 }
+
+
 
 class ChatPageState extends State<ChatPage> {
   // 这里注意一下这个arguments，是我们用来接收上个页面传来的用户名以及头像
@@ -405,6 +52,10 @@ class ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
 //    _setUserData();
+
+     Storage.getJson("userInfo").then((userInfo){
+      this.userInfo = userInfo;
+    });
 
     _textEditingController = TextEditingController();
     _scrollController = ScrollController();
@@ -441,11 +92,15 @@ class ChatPageState extends State<ChatPage> {
       'type': 'private_chat',
       'content_type': 'text',
       'Content': msg,
-      'recv_id': arguments['recv_id']
+      // 'recv_id': arguments['recv_id']
+      'recv_id': arguments["id"],
+      'send_id':userInfo['id']
     };
     // 存储文字消息
-    Provider.of<SocketProvider>(context, listen: false).setRecords(msg, 'text', true);
-    _scrollController.animateTo(0.0,duration: Duration(milliseconds: 300), curve: Curves.linear);
+    Provider.of<SocketProvider>(context, listen: false)
+        .setRecords(msg, 'text', true);
+    _scrollController.animateTo(0.0,
+        duration: Duration(milliseconds: 300), curve: Curves.linear);
     // socket发送消息
     socketProvider.socket.write(json.encode(contentArguments));
   }
@@ -480,254 +135,226 @@ class ChatPageState extends State<ChatPage> {
 //    });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(
-              IconData(0xe622, fontFamily: 'myIcon'),
-              size: 40.0,
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: Container(
-            child: Text(
-              '${arguments['nickname']}',
-              style: TextStyle(fontSize: 35.0),
-            ),
-          ),
-          centerTitle: true,
-          // backgroundColor: Colors.grey[200],
-          elevation: 0.0,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.people),
-              onPressed: () {
-                print('更多');
-              },
-            )
-          ],
-        ),
-        backgroundColor: Colors.grey[200],
-        body: Consumer<SocketProvider>(
-          builder: (context, socketProvider, child) {
-            return Container(
-              color: Colors.white,
-              child: Column(
-                children: <Widget>[
-                  Divider(
-                    height: 0.5,
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: InkWell(
-                        child: EasyRefresh.custom(
-                          scrollController: _scrollController,
-                          reverse: true,
-                          footer: CustomFooter(
-                              enableInfiniteLoad: false,
-                              extent: 40.0,
-                              triggerDistance: 50.0,
-                              footerBuilder: (context,
-                                  loadState,
-                                  pulledExtent,
-                                  loadTriggerPullDistance,
-                                  loadIndicatorExtent,
-                                  axisDirection,
-                                  float,
-                                  completeDuration,
-                                  enableInfiniteLoad,
-                                  success,
-                                  noMore) {
-                                return Stack(
-                                  children: <Widget>[
-                                    Positioned(
-                                      bottom: 0.0,
-                                      left: 0.0,
-                                      right: 0.0,
-                                      child: Container(
-                                        width: 30.0,
-                                        height: 30.0,
-                                        child: SpinKitCircle(
-                                          color: Colors.green,
-                                          size: 30.0,
-                                        ),
-                                      ),
+  Widget _messages(){
+
+    return Consumer<SocketProvider>(
+      builder: (context, socketProvider, child) {
+        return Container(
+          color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              Divider(
+                height: 0.5,
+              ),
+              Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    child: EasyRefresh.custom(
+                      scrollController: _scrollController,
+                      reverse: true,
+                      footer: CustomFooter(
+                          enableInfiniteLoad: false,
+                          extent: 40.0,
+                          triggerDistance: 50.0,
+                          footerBuilder: (context,
+                              loadState,
+                              pulledExtent,
+                              loadTriggerPullDistance,
+                              loadIndicatorExtent,
+                              axisDirection,
+                              float,
+                              completeDuration,
+                              enableInfiniteLoad,
+                              success,
+                              noMore) {
+                            return Stack(
+                              children: <Widget>[
+                                Positioned(
+                                  bottom: 0.0,
+                                  left: 0.0,
+                                  right: 0.0,
+                                  child: Container(
+                                    width: 30.0,
+                                    height: 30.0,
+                                    child: SpinKitCircle(
+                                      color: Colors.green,
+                                      size: 30.0,
                                     ),
-                                  ],
-                                );
-                              }),
-                          slivers: <Widget>[
-                            SliverList(
-                              delegate: SliverChildBuilderDelegate(
+                                  ),
+                                ),
+                              ],
+                            );
+                          }),
+                      slivers: <Widget>[
+                        SliverList(
+                          delegate: SliverChildBuilderDelegate(
                                 (context, index) {
-                                  return _buildMsg(
-                                      socketProvider.records[index]);
-                                },
-                                childCount: socketProvider.records.length,
-                              ),
-                            ),
-                          ],
-                          onLoad: () async {},
+                              return _buildMsg(
+                                  socketProvider.records[index]);
+                            },
+                            childCount: socketProvider.records.length,
+                          ),
+                        ),
+                      ],
+                      onLoad: () async {},
+                    ),
+                    onTap: () {
+                      setState(() {
+                        _height = 0;
+                      });
+                    },
+                  )),
+              SafeArea(
+                child: Container(
+                  color: Colors.grey[100],
+                  padding: EdgeInsets.only(
+                    left: 15.0,
+                    right: 15.0,
+                    top: 8.0,
+                    bottom: 8.0,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      InkWell(
+                        child: Container(
+                          margin: EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Icon(
+                            Icons.keyboard_voice,
+                            color: Colors.grey,
+                          ),
                         ),
                         onTap: () {
                           setState(() {
-                            _height = 0;
+                            this._height = 0;
+                            this.localSocket = socketProvider.socket;
+                            this.soundRecording = !this.soundRecording;
                           });
                         },
-                      )),
-                  SafeArea(
-                    child: Container(
-                      color: Colors.grey[100],
-                      padding: EdgeInsets.only(
-                        left: 15.0,
-                        right: 15.0,
-                        top: 8.0,
-                        bottom: 8.0,
                       ),
-                      child: Row(
-                        children: <Widget>[
-                          InkWell(
-                            child: Container(
-                              margin: EdgeInsets.only(right: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Icon(
-                                Icons.keyboard_voice,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            onTap: () {
-                              setState(() {
-                                this._height = 0;
-                                this.localSocket = socketProvider.socket;
-                                this.soundRecording = !this.soundRecording;
-                              });
-                            },
-                          ),
 //                          soundRecording ?
 //                          Expanded(
 //                            flex: 1,
 //                            child: VoiceWidget(startRecord: startRecord,stopRecord: stopRecord),
 //                          )
 //                              :
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                left: 5.0,
-                                right: 5.0,
-                                top: 5.0,
-                                bottom: 5.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                  20,
-                                )),
-                              ),
-                              child: TextField(
-                                controller: _textEditingController,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.only(
-                                    top: 2.0,
-                                    bottom: 2.0,
-                                  ),
-                                  border: InputBorder.none,
-                                ),
-                                onChanged: (val) {},
-                                onSubmitted: (value) {
-                                  if (_textEditingController.text.isNotEmpty) {
-                                    _sendMsg(_textEditingController.text,
-                                        socketProvider);
-                                    _textEditingController.text = '';
-                                  }
-                                },
-                                onTap: () {
-                                  setState(() {
-                                    _height = 0;
-                                  });
-                                },
-                              ),
-                            ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            left: 5.0,
+                            right: 5.0,
+                            top: 5.0,
+                            bottom: 5.0,
                           ),
-                          InkWell(
-                            child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 15),
-                              decoration: BoxDecoration(
-                                  // color: Colors.grey,
-                                  borderRadius: BorderRadius.circular(50),
-                                  border: Border.all(
-                                      width: 0.5, color: Colors.grey)),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.grey,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(
+                              20,
+                            )),
+                          ),
+                          child: TextField(
+                            controller: _textEditingController,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                top: 2.0,
+                                bottom: 2.0,
                               ),
+                              border: InputBorder.none,
                             ),
+                            onChanged: (val) {},
+                            onSubmitted: (value) {
+                              if (_textEditingController.text.isNotEmpty) {
+                                _sendMsg(_textEditingController.text,
+                                    socketProvider);
+                                _textEditingController.text = '';
+                              }
+                            },
                             onTap: () {
-                              // 收起键盘
-                              // FocusScope.of(context).requestFocus(FocusNode());
                               setState(() {
-                                this.soundRecording = false;
-                                _height = 100;
+                                _height = 0;
                               });
                             },
                           ),
-                          // :
-                          InkWell(
-                            onTap: () {
-                              if (_textEditingController.text.isEmpty) {
-                                return;
-                              }
-
-                              if (_textEditingController.text.isNotEmpty) {
-                                _sendMsg(_textEditingController.text,socketProvider);
-                                _textEditingController.text = '';
-                              }
-
-                            },
-                            child: Container(
-                              height: 30.0,
-                              width: 60.0,
-                              alignment: Alignment.center,
-                              // margin: EdgeInsets.only(
-                              //   left: ScreenAdapter.setWidth(10),
-                              // ),
-                              decoration: BoxDecoration(
-                                // color: _textEditingController.text.isEmpty
-                                //     ? Colors.grey
-                                //     : Colors.green,
-                                color: Color(0xff4ADDFE),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                  20,
-                                )),
-                              ),
-                              child: Text(
-                                '发送',
-                                // S.of(context).send,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                      InkWell(
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 15),
+                          decoration: BoxDecoration(
+                            // color: Colors.grey,
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border.all(
+                                  width: 0.5, color: Colors.grey)),
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        onTap: () {
+                          // 收起键盘
+                          // FocusScope.of(context).requestFocus(FocusNode());
+                          setState(() {
+                            this.soundRecording = false;
+                            _height = 100;
+                          });
+                        },
+                      ),
+                      // :
+                      InkWell(
+                        onTap: () {
+                          if (_textEditingController.text.isEmpty) {
+                            return;
+                          }
+
+                          if (_textEditingController.text.isNotEmpty) {
+                            _sendMsg(_textEditingController.text,
+                                socketProvider);
+                            _textEditingController.text = '';
+                          }
+                        },
+                        child: Container(
+                          height: 30.0,
+                          width: 60.0,
+                          alignment: Alignment.center,
+                          // margin: EdgeInsets.only(
+                          //   left: ScreenAdapter.setWidth(10),
+                          // ),
+                          decoration: BoxDecoration(
+                            // color: _textEditingController.text.isEmpty
+                            //     ? Colors.grey
+                            //     : Colors.green,
+                            color: Color(0xff4ADDFE),
+                            borderRadius: BorderRadius.all(Radius.circular(
+                              20,
+                            )),
+                          ),
+                          child: Text(
+                            '发送',
+                            // S.of(context).send,
+                            style: TextStyle(
+                                color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  AnimatedContainer(
-                      duration: duration,
-                      height: _height,
-                      width: MediaQuery.of(context).size.width,
-                      color: Colors.white,
-                      child: Container(
-                          child: GridView(
+                ),
+              ),
+              AnimatedContainer(
+                  duration: duration,
+                  height: _height,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.white,
+                  child: Container(
+                      child: GridView(
                         padding: EdgeInsets.zero,
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 120.0,
                             childAspectRatio: 1.0 //宽高比为2
-                            ),
+                        ),
                         children: <Widget>[
                           IconButton(
                             icon: Icon(Icons.camera_alt),
@@ -836,16 +463,28 @@ class ChatPageState extends State<ChatPage> {
                           ),
                         ],
                       ))),
-                ],
-              ),
-            );
-          },
-        ));
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScaffoldLayout(
+        option: {
+          "title":arguments["username"]
+        },
+        child: _messages()
+    );
   }
 
   // 构建消息视图
   Widget _buildMsg(ChatRecord entity) {
-    if (entity == null || entity.newIsMe == null || userInfo == null) {
+    print(
+        '----${entity.message},${entity.type},${entity.time_length},${entity.newIsMe}');
+    if (entity == null || entity.newIsMe == null) {
       return Container();
     }
     if (entity.newIsMe) {
@@ -853,6 +492,7 @@ class ChatPageState extends State<ChatPage> {
         margin: EdgeInsets.all(
           10.0,
         ),
+        decoration: BoxDecoration(color: Colors.teal),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -861,9 +501,6 @@ class ChatPageState extends State<ChatPage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(
-                      top: 5.0,
-                    ),
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       color: entity.type == 'text' || entity.type == 'audio'
@@ -884,13 +521,16 @@ class ChatPageState extends State<ChatPage> {
               ),
               clipBehavior: Clip.hardEdge,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
               ),
               elevation: 0.0,
               child: Container(
                 height: 40.0,
                 width: 40.0,
-//                child: Image.network('$base_url${userInfo['head_pic']}', fit: BoxFit.cover,),
+                child: Image.asset(
+                  'images/login3.jpeg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ],

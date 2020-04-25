@@ -4,7 +4,6 @@ import 'package:notebook/home/message/message.dart';
 import 'contact.dart';
 import 'relation.dart';
 import 'share.dart';
-import 'package:notebook/home/message/chatPage.dart';
 
 class Choice {
   const Choice({this.title, this.icon});
@@ -67,8 +66,8 @@ class HomeState extends State<Home> {
           'bottomNavigationBar': _bottomNavigationBar()
         },
         child: [
-          new ChatPage({'nickname': 'jv'}),
-          //new Message(),
+//          new ChatPage({'nickname': 'jv'}),
+          new Message(),
           new Contact(),
           new Relation(),
           new Share()

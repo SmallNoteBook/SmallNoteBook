@@ -17,8 +17,8 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		FA378D03244FEE5A00DB0E43 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CC99D638C96AB43E54EBE0 /* Pods_Runner.framework */; };
 		FA378D04244FEE5A00DB0E43 /* Pods_Runner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E5CC99D638C96AB43E54EBE0 /* Pods_Runner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FAB9682224502BE000FBE7AC /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
-		FAB9682324502BE000FBE7AC /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FAFDCF5C24516EBD001EF695 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
+		FAFDCF5D24516EBD001EF695 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +29,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */,
-				FAB9682324502BE000FBE7AC /* App.framework in Embed Frameworks */,
+				FAFDCF5D24516EBD001EF695 /* App.framework in Embed Frameworks */,
 				FA378D04244FEE5A00DB0E43 /* Pods_Runner.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -74,7 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */,
-				FAB9682224502BE000FBE7AC /* App.framework in Frameworks */,
+				FAFDCF5C24516EBD001EF695 /* App.framework in Frameworks */,
 				FA378D03244FEE5A00DB0E43 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

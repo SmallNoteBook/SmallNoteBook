@@ -22,7 +22,10 @@ public class UserService {
      */
     //@DataFilter(tableAlias = "B", owner = false)
     public List<User> getList(Map<String, Object> map){
-        return dao.getList(map);
+        List list = dao.getList(map);
+        System.out.println("list---------------");
+        System.out.println(list);
+        return list;
     }
 
     /** find the entity by input id, return entity

@@ -1,98 +1,52 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:web_socket_channel/io.dart';
+import 'package:notebook/util/localStorage/Storage.dart';
 
 class Message extends StatefulWidget {
-  MessageState createState() => new MessageState();
+  MessageState createState() => MessageState();
 }
 
 class MessageState extends State<Message> {
-  final String host = "ws://echo.websocket.org";
-  final int port = 7888;
-  IOWebSocketChannel channel;
-  String _text = "";
-  List _list = new List();
+   List _messageList = new List();
+
   @override
   void initState() {
-    // //创建websocket连接
-    // channel = new IOWebSocketChannel.connect('ws://echo.websocket.org');
-
-    // // 监听消息
-    // channel.stream.listen((message) {
-    //   print(message);
-    //   setState(() {
-    //     _list.add('[Received] ${message.toString()}');
-    //   });
-    // });
-    // print('开始连接------');
-    // Socket.connect('172.10.3.205', 7888).then((socket) {
-    //   print('连接成功------');
-    // });
-  }
-
-  void _sendMessage() {
-    if (this._text != '') {
-      channel.sink.add(this._text);
-    }
-  }
-
-  List<Widget> _generatorList() {
-    List<Widget> tmpList = _list.map((item) => ListItem(msg: item)).toList();
-    List<Widget> prefix = [_generatorForm()];
-    prefix.addAll(tmpList);
-//    prefix.add(_messageInput());
-    return prefix;
-  }
-
-  Widget _generatorForm() {
-    return Column(
-      children: <Widget>[
-        TextField(onChanged: (text) => this._text = text),
-        SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Send'),
-              onPressed: _sendMessage,
-            )
-          ],
-        )
-      ],
-    );
+    super.initState();
+//    _setUserData();
+    Storage.getJson("messageList").then((messageList) {
+      setState(() {
+        _messageList = messageList;
+        print("messageList2");
+        print(messageList);
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.all(10),
-      children: _generatorList(),
-    );
+    return _listView();
+  }
+
+  Widget _listView() {
+    return ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: _messageList.length,
+        itemBuilder: (BuildContext context, int index) {
+          var item = _messageList[index];
+          return new ListTile(
+          leading: Icon(
+            Icons.account_box,
+            color: Colors.black,
+          ),
+            trailing: Icon(Icons.keyboard_arrow_right),
+            title: new Text(
+              item['username']
+            ),
+            onTap: () async {
+              // 获取下一页返回过来数据的方法，打开新页面page3后，便会等着返回，返回此页时就能拿到page3返回的数据
+              var res = await Navigator.of(context).pushNamed('/chat',arguments: item);
+              print('res--->$res');
+            },
+          );
+        });
   }
 }
-
-class ListItem extends StatelessWidget {
-  final String msg;
-  ListItem({Key key, this.msg}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(msg);
-  }
-}
-
-//import 'package:flutter/material.dart';
-//
-//import 'dart:io';
-//
-//class Message extends StatefulWidget{
-//  MessageState createState()=>new MessageState();
-//}
-//
-//class MessageState extends State<Message>{
-//
-//  Widget build(BuildContext context){
-//
-//    return
-//  }
-//}
