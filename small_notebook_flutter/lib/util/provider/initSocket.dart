@@ -74,7 +74,7 @@ class ClientSocket {
 
     response = json.decode(cnData.toString());
     print('-------response-------');
-print(response);
+    print(response);
     // 判断返回的状态信息token验证是否成功，如果相等，变可以socket通信
     if (response['type'] == 'verify_success') {
 //      Fluttertoast.showToast(msg: '欢迎登录~');
@@ -94,27 +94,11 @@ print(response);
     if (response['recv_id'] != response['send_id']) {
       // 判断消息类型，存储到provide消息实体当中
       switch (response['content_type']) {
-        case 'text':
-          Provider.of<SocketProvider>(localContext, listen: false)
-              .setRecords(response['Content'], 'text', false);
-          break;
-        case 'img':
-          Provider.of<SocketProvider>(localContext, listen: false)
-              .setRecords(response['Content'], 'img', false);
-          break;
-        case 'video':
-          Provider.of<SocketProvider>(localContext, listen: false)
-              .setRecords(response['Content'], 'video', false);
-          break;
         case 'audio':
-          Provider.of<SocketProvider>(localContext, listen: false).setRecords(
-              response['Content'], 'audio', false,
-              time_length: response['time_length']);
+          Provider.of<SocketProvider>(localContext, listen: false).setRecords(response['send_id'], response['Content'], 'audio', false,time_length: response['time_length']);
           break;
-        default:
+        default:Provider.of<SocketProvider>(localContext, listen: false).setRecords(response['send_id'],response['Content'], response['content_type'], false);
       }
-    }else{
-
     }
   }
 

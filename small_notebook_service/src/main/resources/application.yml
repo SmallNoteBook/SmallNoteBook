@@ -11,8 +11,8 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://rm-bp1x9xetor0rc5zo2vo.mysql.rds.aliyuncs.com:3306/mex?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-        username: 1111
-        password: 1111
+        username: xjxmex1111
+        password: 1993129xjX
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss

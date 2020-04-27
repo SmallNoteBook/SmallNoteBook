@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:convert';
 
@@ -24,8 +23,6 @@ class ChatPage extends StatefulWidget {
     return ChatPageState(this.arguments);
   }
 }
-
-
 
 class ChatPageState extends State<ChatPage> {
   // 这里注意一下这个arguments，是我们用来接收上个页面传来的用户名以及头像
@@ -53,7 +50,7 @@ class ChatPageState extends State<ChatPage> {
     super.initState();
 //    _setUserData();
 
-     Storage.getJson("userInfo").then((userInfo){
+    Storage.getJson("userInfo").then((userInfo) {
       this.userInfo = userInfo;
     });
 
@@ -94,12 +91,12 @@ class ChatPageState extends State<ChatPage> {
       'Content': msg,
       // 'recv_id': arguments['recv_id']
       'recv_id': arguments["id"],
-      'send_id':userInfo['id']
+      'send_id': userInfo['id']
     };
     // 存储文字消息
     Provider.of<SocketProvider>(context, listen: false)
-        .setRecords(msg, 'text', true);
-    _scrollController.animateTo(0.0,
+        .setRecords(arguments["id"], msg, 'text', true);
+_scrollController.animateTo(0.0,
         duration: Duration(milliseconds: 300), curve: Curves.linear);
     // socket发送消息
     socketProvider.socket.write(json.encode(contentArguments));
@@ -117,7 +114,7 @@ class ChatPageState extends State<ChatPage> {
       this.audioPath = path;
     });
 
-//    api.postData(context, 'uploadFile', formData: await FormData1(path)).then((data){
+//    api.postData(context, 'uploadFile', formData: await formData1(path)).then((data){
 //      var audiourl = json.decode(data.toString())['file_path'];
 //      Map contentArguments = {
 //        'type':'private_chat',
@@ -135,8 +132,7 @@ class ChatPageState extends State<ChatPage> {
 //    });
   }
 
-  Widget _messages(){
-
+  Widget _messages() {
     return Consumer<SocketProvider>(
       builder: (context, socketProvider, child) {
         return Container(
@@ -188,11 +184,20 @@ class ChatPageState extends State<ChatPage> {
                       slivers: <Widget>[
                         SliverList(
                           delegate: SliverChildBuilderDelegate(
-                                (context, index) {
-                              return _buildMsg(
-                                  socketProvider.records[index]);
+                            (context, index) {
+                              Map _records = socketProvider.records;
+                              List<ChatRecord> _record = List<ChatRecord>();
+                              if (_records.containsKey(arguments["id"])) {
+                                _record = _records[arguments["id"]];
+                              } else {
+                                _record = [];
+                              }
+                              print("***************${socketProvider.records}");
+
+                              print("***************${socketProvider?.records[arguments["id"]]?.length}");
+                              return _buildMsg(_record[index]);
                             },
-                            childCount: socketProvider.records.length,
+                            childCount: socketProvider?.records[arguments["id"]]?.length??0,
                           ),
                         ),
                       ],
@@ -284,10 +289,10 @@ class ChatPageState extends State<ChatPage> {
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 15),
                           decoration: BoxDecoration(
-                            // color: Colors.grey,
+                              // color: Colors.grey,
                               borderRadius: BorderRadius.circular(50),
-                              border: Border.all(
-                                  width: 0.5, color: Colors.grey)),
+                              border:
+                                  Border.all(width: 0.5, color: Colors.grey)),
                           child: Icon(
                             Icons.add,
                             color: Colors.grey,
@@ -310,8 +315,8 @@ class ChatPageState extends State<ChatPage> {
                           }
 
                           if (_textEditingController.text.isNotEmpty) {
-                            _sendMsg(_textEditingController.text,
-                                socketProvider);
+                            _sendMsg(
+                                _textEditingController.text, socketProvider);
                             _textEditingController.text = '';
                           }
                         },
@@ -334,8 +339,7 @@ class ChatPageState extends State<ChatPage> {
                           child: Text(
                             '发送',
                             // S.of(context).send,
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 20),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
                       ),
@@ -350,21 +354,20 @@ class ChatPageState extends State<ChatPage> {
                   color: Colors.white,
                   child: Container(
                       child: GridView(
-                        padding: EdgeInsets.zero,
-                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 120.0,
-                            childAspectRatio: 1.0 //宽高比为2
+                    padding: EdgeInsets.zero,
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 120.0, childAspectRatio: 1.0 //宽高比为2
                         ),
-                        children: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.camera_alt),
-                            onPressed: () async {
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.camera_alt),
+                        onPressed: () async {
 //                                  var img_url = await Plugins.takePhoto();
 //                                  if(img_url!=null){
 //                                    setState(() {
 //                                      localImage = img_url;
 //                                    });
-//                                    api.postData(context, 'uploadFile', formData: await FormData1(img_url.path)).then((data){
+//                                    api.postData(context, 'uploadFile', formData: await formData1(img_url.path)).then((data){
 //                                      var imgurl = json.decode(data.toString())['file_path'];
 //                                      Map contentArguments = {
 //                                        'type':'private_chat',
@@ -378,20 +381,20 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.photo),
-                            onPressed: () async {
-                              print(
-                                  '---------------------选择图片---------------------');
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.photo),
+                        onPressed: () async {
+                          print(
+                              '---------------------选择图片---------------------');
 //                                  var img_url = await Plugins.openGallery();
 //                                  if(img_url!=null){
 //                                    setState(() {
 //                                      localImage = img_url;
 //                                    });
 //                                    print(localImage);
-//                                    api.postData(context, 'uploadFile', formData: await FormData1(img_url.path)).then((data){
+//                                    api.postData(context, 'uploadFile', formData: await formData1(img_url.path)).then((data){
 //                                      var imgurl = json.decode(data.toString())['file_path'];
 //                                      print('路径');
 //                                      print(imgurl);
@@ -407,18 +410,18 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.videocam),
-                            onPressed: () async {
-                              print('录像');
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.videocam),
+                        onPressed: () async {
+                          print('录像');
 //                                  var video_url = await Plugins.takeVideo();
 //                                  if(video_url!=null){
 //                                    setState(() {
 //                                      localVideo = video_url;
 //                                    });
-//                                    api.postData(context, 'uploadFile', formData: await FormData1(video_url.path)).then((data){
+//                                    api.postData(context, 'uploadFile', formData: await formData1(video_url.path)).then((data){
 //                                      var videourl = json.decode(data.toString())['file_path'];
 //                                      Map contentArguments = {
 //                                        'type':'private_chat',
@@ -432,12 +435,12 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.movie),
-                            onPressed: () async {
-                              print('发送视频');
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.movie),
+                        onPressed: () async {
+                          print('发送视频');
 //                                  var video_url = await Plugins.getVideo();
 //                                  //  print(video_url);
 //                                  if(video_url!=null){
@@ -445,7 +448,7 @@ class ChatPageState extends State<ChatPage> {
 //                                      localVideo = video_url;
 //                                    });
 //
-//                                    api.postData(context, 'uploadFile', formData: await FormData1(video_url.path)).then((data){
+//                                    api.postData(context, 'uploadFile', formData: await formData1(video_url.path)).then((data){
 //                                      var videourl = json.decode(data.toString())['file_path'];
 //                                      Map contentArguments = {
 //                                        'type':'private_chat',
@@ -459,10 +462,10 @@ class ChatPageState extends State<ChatPage> {
 //                                      val.socket.write(json.encode(contentArguments));
 //                                    });
 //                                  }
-                            },
-                          ),
-                        ],
-                      ))),
+                        },
+                      ),
+                    ],
+                  ))),
             ],
           ),
         );
@@ -473,11 +476,7 @@ class ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldLayout(
-        option: {
-          "title":arguments["username"]
-        },
-        child: _messages()
-    );
+        option: {"title": arguments["username"]}, child: _messages());
   }
 
   // 构建消息视图
@@ -700,6 +699,7 @@ class ChatPageState extends State<ChatPage> {
                   ));
         break;
       default:
+        return Text('nothing');
     }
   }
 
@@ -709,7 +709,7 @@ class ChatPageState extends State<ChatPage> {
   }
 
   // dio上传文件FormData格式
-  Future<FormData> FormData1(fileUrl) async {
+  Future<FormData> formData1(fileUrl) async {
     return FormData.fromMap({"file": await MultipartFile.fromFile(fileUrl)});
   }
 }

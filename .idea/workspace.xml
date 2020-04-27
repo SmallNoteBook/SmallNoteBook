@@ -5,26 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e20754ce-7e27-46e6-99b9-681388b25414" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/util/localStorage/Storage.dart" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/ios/Podfile.lock" afterPath="$PROJECT_DIR$/small_notebook_flutter/ios/Podfile.lock" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/ios/Runner.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/small_notebook_flutter/ios/Runner.xcodeproj/project.pbxproj" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" />
       <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/routes.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/routes.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
       <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart" />
       <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/pubspec.lock" afterPath="$PROJECT_DIR$/small_notebook_flutter/pubspec.lock" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" afterPath="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/pom.xml" afterPath="$PROJECT_DIR$/small_notebook_service/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/IMServer/NettyServer.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/IMServer/NettyServer.java" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/IMServer/handler/BaseHandler.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/IMServer/handler/BaseHandler.java" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/IMServer/handler/ChannelBlock.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/IMServer/handler/ChannelBlock.java" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/admin/service/UserService.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/admin/service/UserService.java" />
+      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/resources/application.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/small_notebook_flutter/.dart_tool/" />
@@ -64,18 +49,30 @@
       <file leaf-file-name="SocketProvider.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="138">
+              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initSocket.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chatPage.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="93" column="14" lean-forward="false" selection-start-line="93" selection-start-column="7" selection-end-line="93" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="initSocket.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="298">
+              <caret line="96" column="21" lean-forward="true" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="21" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -86,24 +83,9 @@
       <file leaf-file-name="message.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
-              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+            <state relative-caret-position="123">
+              <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chatPage.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-              <folding>
-                <element signature="e#1#21#0" expanded="true" />
-                <element signature="e#3756#19557#0" expanded="false" />
-                <element signature="e#19795#23532#0" expanded="false" />
-                <element signature="e#23582#27157#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -111,8 +93,8 @@
       <file leaf-file-name="ScaffoldLayout.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/components/ScaffoldLayout.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+            <state relative-caret-position="60">
+              <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -129,15 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>doneHandler</find>
-      <find>initState</find>
-      <find>netWorkstate</find>
-      <find>key</find>
-      <find>localSocket</find>
-      <find>_sendMsg</find>
-      <find>print</find>
-      <find>entity</find>
-      <find>sliver</find>
       <find>Image.asset</find>
       <find>dataHandler</find>
       <find>时间到了!!!开始从连socket</find>
@@ -156,10 +129,22 @@
       <find>ScaffoldLayout</find>
       <find>setC</find>
       <find>userInfo</find>
+      <find>a</find>
+      <find>records</find>
+      <find>FormData1</find>
+      <find>length</find>
       <find>]-----response-</find>
       <find>Storage</find>
+      <find>socketProvider?.records[arguments[&quot;id&quot;]]</find>
       <find>setRecords</find>
+      <find>List&lt;dynamic</find>
+      <find>List &lt;dynamic</find>
+      <find>ChatRecord</find>
+      <find>dynamic</find>
     </findStrings>
+    <replaceStrings>
+      <replace>formData1</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -182,16 +167,16 @@
         <option value="$PROJECT_DIR$/small_notebook_flutter/pubspec.yaml" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/util/localStorage/Storage.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
-        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/routes.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart" />
+        <option value="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart" />
         <option value="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="840" />
@@ -469,8 +454,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="840" extended-state="1" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -483,7 +467,7 @@
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36154777" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4738255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -548,10 +532,7 @@
         <state relative-caret-position="6105">
           <caret line="407" column="16" lean-forward="false" selection-start-line="407" selection-start-column="7" selection-end-line="407" selection-end-column="16" />
           <folding>
-            <element signature="e#1#21#0" expanded="true" />
-            <element signature="e#3756#19557#0" expanded="false" />
-            <element signature="e#19795#23532#0" expanded="false" />
-            <element signature="e#23582#27157#0" expanded="false" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -607,10 +588,7 @@
         <state relative-caret-position="135">
           <caret line="377" column="2" lean-forward="false" selection-start-line="377" selection-start-column="2" selection-end-line="377" selection-end-column="2" />
           <folding>
-            <element signature="e#1#21#0" expanded="true" />
-            <element signature="e#3756#19557#0" expanded="false" />
-            <element signature="e#19795#23532#0" expanded="false" />
-            <element signature="e#23582#27157#0" expanded="false" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -845,14 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/components/ScaffoldLayout.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/home.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -863,41 +833,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart">
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/components/ScaffoldLayout.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        <state relative-caret-position="60">
+          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart">
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="123">
+          <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="138">
+          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+        <state relative-caret-position="232">
+          <caret line="93" column="14" lean-forward="false" selection-start-line="93" selection-start-column="7" selection-end-line="93" selection-end-column="14" />
           <folding>
-            <element signature="e#1#21#0" expanded="true" />
-            <element signature="e#3756#19557#0" expanded="false" />
-            <element signature="e#19795#23532#0" expanded="false" />
-            <element signature="e#23582#27157#0" expanded="false" />
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="96" column="21" lean-forward="true" selection-start-line="96" selection-start-column="21" selection-end-line="96" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>

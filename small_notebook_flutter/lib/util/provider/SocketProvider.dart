@@ -4,11 +4,11 @@ import 'package:notebook/util/provider/initSocket.dart';
 //import 'package:project/plugins/PublicStorage.dart';
 
 class SocketProvider with ChangeNotifier {
-  int a = 1;
   Socket socket; // 存储socket实例
   String netWorkstate = 'none'; // 网络状态
-  List<ChatRecord> records = List<ChatRecord>();
+//  List<ChatRecord> _records = List<ChatRecord>();
   List contact = List();
+  Map<int, List<ChatRecord>> records = Map();
 
 // 存储socket实例
   setSocket(val) {
@@ -18,19 +18,42 @@ class SocketProvider with ChangeNotifier {
 
 // 存储发送来的消息
 // 私聊消息，消息类型, 是不是我发送的，语音时间长度, 是否需要显示成网络信息， 是不是历史记录存储
-  setRecords(message, String type, bool newIsMe,{String time_length, history: false}) {
-    records..insert(0,ChatRecord(message: message,type: type,newIsMe: newIsMe,time_length: time_length));
+  setRecords(id, message, String type, bool newIsMe,
+      {String time_length, history: false}) {
+    if (records.containsKey(id)) {
+      records[id] = records[id]
+        ..insert(
+            0,
+            ChatRecord(
+                message: message,
+                type: type,
+                newIsMe: newIsMe,
+                time_length: time_length));
+    } else {
+      print("&&&&&&&&&&&&&");
+      records.addAll({
+        id: [
+          ChatRecord(
+              message: message,
+              type: type,
+              newIsMe: newIsMe,
+              time_length: time_length)
+        ]
+      });
+print("&&&&&&&&&&&&&${records}");
+    }
+
     notifyListeners();
   }
 
   //更新联系人
-  setContact(List list){
+  setContact(List list) {
     this.contact = list;
-}
+  }
 
 // 清空消息页面
   clearRecords() {
-    records = [];
+//    records = [];
   }
 
 // 设置当前网络状态
