@@ -1,26 +1,32 @@
-package com.mex.notebook.IMServer;
+package com.mex.notebook.imessage.service;
 
-import com.mex.notebook.IMServer.handler.BaseHandler;
-import com.mex.notebook.IMServer.handler.ChannelBlock;
+import com.mex.notebook.common.Record;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
-public class NettyServer {
+/**
+ * TODO
+ *
+ * @author xujinxin
+ * @date 2020/4/28 4:56 PM
+ */
+@Service
+public class NettyService {
 
-    static int DefaultPort = 8080;
+    static int DefaultPort = 8777;
 
-    public NettyServer(){}
+    @Autowired
+    private ChannelService channelService;
 
-    public void setPort(int port){
-        DefaultPort = port;
-    }
-
-
-    public void start(){
+    @Async
+    public void start(Record record){
         EventLoopGroup boss = new NioEventLoopGroup();
         EventLoopGroup work = new NioEventLoopGroup();
 
@@ -31,7 +37,7 @@ public class NettyServer {
             bootstrap.option(ChannelOption.SO_BACKLOG,1024);// 连接数
             bootstrap.option(ChannelOption.TCP_NODELAY,true); // 消息不延迟立刻发送
             bootstrap.option(ChannelOption.SO_KEEPALIVE,true); // 长连接
-            bootstrap.childHandler(new ChannelBlock()); // 设置消息处理器
+            bootstrap.childHandler(channelService); // 设置消息处理器
 
             ChannelFuture channelFuture = bootstrap.bind(DefaultPort).sync();
             if(channelFuture.isSuccess()){
@@ -46,4 +52,5 @@ public class NettyServer {
             work.shutdownGracefully();
         }
     }
+
 }

@@ -1,11 +1,18 @@
-package com.mex.notebook.IMServer.handler;
+package com.mex.notebook.imessage.service;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.SimpleChannelInboundHandler;
+import org.springframework.stereotype.Service;
 
-public class BaseHandler extends ChannelInboundHandlerAdapter {
+/**
+ * TODO
+ *
+ * @author xujinxin
+ * @date 2020/4/28 5:03 PM
+ */
+@Service
+public class BaseHandlerService extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object msg) throws Exception {
@@ -33,4 +40,5 @@ public class BaseHandler extends ChannelInboundHandlerAdapter {
             //buf.release();
         }
     }
+
 }
