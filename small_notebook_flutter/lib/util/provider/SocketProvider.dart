@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:notebook/util/provider/initSocket.dart';
-//import 'package:project/plugins/PublicStorage.dart';
+import 'package:notebook/util/localStorage/Storage.dart';
 
 class SocketProvider with ChangeNotifier {
   Socket socket; // 存储socket实例
@@ -18,7 +18,7 @@ class SocketProvider with ChangeNotifier {
 
 // 存储发送来的消息
 // 私聊消息，消息类型, 是不是我发送的，语音时间长度, 是否需要显示成网络信息， 是不是历史记录存储
-  setRecords(id, message, String type, bool newIsMe,
+  setRecords(id,message, String type, bool newIsMe,
       {String time_length, history: false}) {
     if (records.containsKey(id)) {
       records[id] = records[id]
@@ -30,7 +30,6 @@ class SocketProvider with ChangeNotifier {
                 newIsMe: newIsMe,
                 time_length: time_length));
     } else {
-      print("&&&&&&&&&&&&&");
       records.addAll({
         id: [
           ChatRecord(
@@ -40,9 +39,14 @@ class SocketProvider with ChangeNotifier {
               time_length: time_length)
         ]
       });
-print("&&&&&&&&&&&&&${records}");
-    }
 
+      Storage.getJson('messageList').then((messageList) {
+        List _messageList = messageList;
+        Map _contact = contact.firstWhere((item) => item['id'] == id);
+        _messageList.add(_contact);
+        Storage.set('messageList', _messageList).then((value) {});
+      });
+    }
     notifyListeners();
   }
 

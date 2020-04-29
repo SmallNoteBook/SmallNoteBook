@@ -14,7 +14,6 @@ import 'package:notebook/util/localStorage/Storage.dart';
 class ChatPage extends StatefulWidget {
   final arguments;
   ChatPage({Key key, this.arguments}) : super(key: key) {
-    print("-------------------");
     print(this.arguments);
   }
 
@@ -35,7 +34,7 @@ class ChatPageState extends State<ChatPage> {
   var localImage, localVideo; // 本地图片和视频
   var audioPath; // 语音路径
   var duration = Duration(milliseconds: 200);
-
+  Map<String,dynamic> _lastMessage = new Map();
   // 输入框
   TextEditingController _textEditingController;
   // 滚动控制器
@@ -96,7 +95,8 @@ class ChatPageState extends State<ChatPage> {
     // 存储文字消息
     Provider.of<SocketProvider>(context, listen: false)
         .setRecords(arguments["id"], msg, 'text', true);
-_scrollController.animateTo(0.0,
+
+    _scrollController.animateTo(0.0,
         duration: Duration(milliseconds: 300), curve: Curves.linear);
     // socket发送消息
     socketProvider.socket.write(json.encode(contentArguments));
@@ -192,12 +192,12 @@ _scrollController.animateTo(0.0,
                               } else {
                                 _record = [];
                               }
-                              print("***************${socketProvider.records}");
-
-                              print("***************${socketProvider?.records[arguments["id"]]?.length}");
+//                              print('包含---${_records.containsKey(arguments["id"])}');
+//                              print('全部消息-----${_records['id']}');
+//                              print('个人消息-----${_record[index].message},-----${arguments['id']}');
                               return _buildMsg(_record[index]);
                             },
-                            childCount: socketProvider?.records[arguments["id"]]?.length??0,
+                            childCount: socketProvider?.records[arguments["id"]]?.length ??0,
                           ),
                         ),
                       ],
@@ -476,16 +476,23 @@ _scrollController.animateTo(0.0,
   @override
   Widget build(BuildContext context) {
     return ScaffoldLayout(
-        option: {"title": arguments["username"]}, child: _messages());
+        option: {
+          "title": arguments["username"],
+//          "leading":GestureDetector(child: Icon(Icons.arrow_back),onTap: (){
+//            Navigator.pop(context,_lastMessage);
+//          }),
+        },
+        child: _messages());
   }
 
   // 构建消息视图
   Widget _buildMsg(ChatRecord entity) {
-    print(
-        '----${entity.message},${entity.type},${entity.time_length},${entity.newIsMe}');
+    print('entity.message--->${entity.message}');
+    print('entity.newIsMe--->${entity.newIsMe}');
     if (entity == null || entity.newIsMe == null) {
       return Container();
     }
+    _lastMessage.addAll({'message':entity.message,'date':DateTime.now()});
     if (entity.newIsMe) {
       return Container(
         margin: EdgeInsets.all(

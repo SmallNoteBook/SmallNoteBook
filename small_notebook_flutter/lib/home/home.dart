@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notebook/components/ScaffoldLayout.dart';
 import 'package:notebook/home/message/message.dart';
-import 'contact.dart';
+import 'package:notebook/home/contact/contact.dart';
 import 'relation.dart';
 import 'share.dart';
 

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:notebook/util/dioUtil/dioUtil.dart';
 import 'package:notebook/components/ScaffoldLayout.dart';
@@ -54,7 +53,8 @@ class LoginFormState extends State<Login> {
       if (data['code'] == 200) {
          Storage.set("userInfo", data['data']).then((val){
            new ClientSocket().connect(context);
-           Navigator.pushNamed(context, '/home');
+//           Navigator.pushNamedAndRemoveUntil(context, '/home',ModalRoute.withName('/'));
+         Navigator.pushNamed(context, '/home');
          });
       } else {
         _scaffoldkey.currentState.showSnackBar(snackBar('登录失败，请校验账号密码'));
@@ -254,7 +254,7 @@ class LoginFormState extends State<Login> {
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
             ),
             padding: const EdgeInsets.all(10.0),
-            child: const Text('登录',
+            child: const Text('登录1',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,

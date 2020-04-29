@@ -1,6 +1,7 @@
 package com.mex.notebook.admin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +10,7 @@ import java.util.Map;
 import com.mex.notebook.admin.dao.UserDao;
 import com.mex.notebook.admin.entity.User;
 
-
-@Service
+@Component
 //@CacheConfig(cacheNames="userCache")
 //@Transactional(propagation=Propagation.REQUIRED, readOnly=false, rollbackFor=Exception.class)
 public class UserService {

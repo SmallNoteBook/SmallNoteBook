@@ -39,6 +39,7 @@ class ClientSocket {
       localSocket = socket;
 
       localContext = context;
+      print('Context ---->${context}');
       await Storage.getJson("userInfo").then((userInfo){
         this._id = userInfo["id"];
       });
@@ -81,7 +82,8 @@ class ClientSocket {
        //这个可以当作全局的联系人
       Provider.of<SocketProvider>(localContext, listen: false).setContact(response["content"]);
       //这个当作当前发送消息的人对应的消息列表
-      Storage.set('messageList', response["content"]);
+//      Storage.set('messageList', response["content"]);
+      print("response[content]--------->${response["content"]}");
       // 给后台发送心跳
       heartbeatSocket();
       return;
@@ -92,12 +94,21 @@ class ClientSocket {
     // if (response['recv_id'] != int.parse(response['send_id'])) {
 
     if (response['recv_id'] != response['send_id']) {
+      print("response['recv_id'] != response['send_id']-->${response['recv_id'] != response['send_id']}");
       // 判断消息类型，存储到provide消息实体当中
+      print("response['send_id']---${response['send_id'] is int}");
+      print("response['Content']---${response['Content']}");
+      print("response['content_type']---${response['content_type']}");
+      print(localContext);
+
       switch (response['content_type']) {
         case 'audio':
           Provider.of<SocketProvider>(localContext, listen: false).setRecords(response['send_id'], response['Content'], 'audio', false,time_length: response['time_length']);
           break;
-        default:Provider.of<SocketProvider>(localContext, listen: false).setRecords(response['send_id'],response['Content'], response['content_type'], false);
+        default:
+          print("response['Content']*---${response['Content']}");
+          Provider.of<SocketProvider>(localContext, listen: false).setRecords(response['send_id'],response['Content'], response['content_type'], false);
+          break;
       }
     }
   }

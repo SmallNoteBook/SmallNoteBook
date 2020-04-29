@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScaffoldLayout extends StatelessWidget {
-  ScaffoldLayout(
-      {Key key, this.child, Map<dynamic, dynamic> this.option = const {}})
-      : super(key: key);
+  ScaffoldLayout({Key key, this.child, Map<dynamic, dynamic> this.option = const {}}): super(key: key);
   final child;
   final option;
 
@@ -17,6 +15,7 @@ class ScaffoldLayout extends StatelessWidget {
           backgroundColor: this.option['backgroundColor'] ?? Colors.black,
           actions: _actions,
           bottom: this.option['bottom'] ?? null,
+          leading: this.option['leading']??null,
         ),
         body: Builder(builder: (BuildContext context) {
           return Container(

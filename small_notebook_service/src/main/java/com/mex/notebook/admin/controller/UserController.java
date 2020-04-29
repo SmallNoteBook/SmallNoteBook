@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.mex.notebook.IMServer.NettyServer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mex.notebook.admin.entity.User;
 import com.mex.notebook.admin.entity.Result;
 import com.mex.notebook.admin.service.UserService;
-
 
 @RestController
 @RequestMapping("admin/user")

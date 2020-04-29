@@ -35,6 +35,6 @@ class Storage {
 
     SharedPreferences _prefs = await SharedPreferences.getInstance();
 
-    return jsonDecode(_prefs.get(key)) ;
+    return jsonDecode(_prefs.get(key)??'[]') ;
   }
 }
