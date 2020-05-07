@@ -5,6 +5,7 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import org.springframework.stereotype.Service;
 
+
 /**
  * TODO
  *
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class ChannelService extends ChannelInitializer<SocketChannel> {
 
     private BaseHandlerService baseHandlerService;
-
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {

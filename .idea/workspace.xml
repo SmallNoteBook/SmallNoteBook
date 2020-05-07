@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e20754ce-7e27-46e6-99b9-681388b25414" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/list/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/chatPage.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/home/message/message.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/login/loginForm.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart" />
-      <change beforePath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart" afterPath="$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/initSocket.dart" />
+      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/imessage/service/BaseHandlerService.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/imessage/service/BaseHandlerService.java" />
+      <change beforePath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/imessage/service/NettyService.java" afterPath="$PROJECT_DIR$/small_notebook_service/src/main/java/com/mex/notebook/imessage/service/NettyService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/small_notebook_flutter/.dart_tool/" />
@@ -54,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="386">
-              <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
+              <caret line="53" column="7" lean-forward="false" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -512,7 +507,7 @@
     <entry file="file://$PROJECT_DIR$/small_notebook_flutter/lib/util/provider/SocketProvider.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
-          <caret line="53" column="7" lean-forward="true" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
+          <caret line="53" column="7" lean-forward="false" selection-start-line="53" selection-start-column="7" selection-end-line="53" selection-end-column="7" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>

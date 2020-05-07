@@ -1,16 +1,11 @@
 package com.mex.notebook.imessage.service;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.mex.notebook.IMServer.NettyServer;
-import com.mex.notebook.admin.entity.User;
 import com.mex.notebook.util.SpringUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
 import io.netty.channel.socket.SocketChannel;
 import io.netty.util.CharsetUtil;
 import com.mex.notebook.admin.service.UserService;
@@ -80,11 +75,11 @@ public class BaseHandlerService extends ChannelInboundHandlerAdapter {
 
             object.put("content", userList);
 
-            NettyServer.channelMap.put(object.getString("recv_id"),(SocketChannel) channelHandlerContext.channel());
+            NettyService.channelMap.put(object.getString("recv_id"),(SocketChannel) channelHandlerContext.channel());
 
         }
 
-        SocketChannel channel= NettyServer.channelMap.get(object.getString("recv_id"));
+        SocketChannel channel= NettyService.channelMap.get(object.getString("recv_id"));
 
         channel.writeAndFlush(Unpooled.copiedBuffer(object.toJSONString(), CharsetUtil.UTF_8));
 

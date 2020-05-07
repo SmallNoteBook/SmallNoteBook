@@ -1,5 +1,5 @@
 package com.mex.notebook.imessage.service;
-import com.mex.notebook.IMServer.handler.ChannelBlock;
+//import com.mex.notebook.IMServer.handler.ChannelBlock;
 import com.mex.notebook.common.Record;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -11,6 +11,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * TODO
