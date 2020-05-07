@@ -1,4 +1,4 @@
-package com.mex.notebook.IMServer.handler;
+package com.mex.notebook.imessage.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -10,14 +10,24 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+
 import io.netty.channel.socket.SocketChannel;
 import io.netty.util.CharsetUtil;
 import com.mex.notebook.admin.service.UserService;
 import java.util.List;
+import org.springframework.stereotype.Service;
+ 
 
-@ChannelHandler.Sharable
-public class BaseHandler extends ChannelInboundHandlerAdapter {
+/**
+ * TODO
+ *
+ * @author xujinxin
+ * @date 2020/4/28 5:03 PM
+ */
+@Service
+public class BaseHandlerService extends ChannelInboundHandlerAdapter {
     private static UserService userService;
+    
     static {
         userService = SpringUtil.getBean(UserService.class);
     }
@@ -27,7 +37,6 @@ public class BaseHandler extends ChannelInboundHandlerAdapter {
     {
         System.out.println("客户端连接成功...");
     }
-
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object msg) throws Exception {
 
@@ -82,4 +91,5 @@ public class BaseHandler extends ChannelInboundHandlerAdapter {
         channelHandlerContext.flush();
 
     }
+
 }
