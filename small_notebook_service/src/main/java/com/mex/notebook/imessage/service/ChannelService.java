@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChannelService extends ChannelInitializer<SocketChannel> {
 
+    @Autowired
     private BaseHandlerService baseHandlerService;
 
     @Override
