@@ -13,11 +13,12 @@ class MessageState extends State<Message> {
   void initState() {
     super.initState();
 //    _setUserData();
-    Storage.getJson("messageList").then((messageList) {
-      setState(() {
-        _messageList = messageList;
-      });
-    });
+    print(111);
+//    Storage.getJson("messageList").then((messageList) {
+//      setState(() {
+//        _messageList = messageList;
+//      });
+//    });
   }
 
   @override
@@ -49,7 +50,8 @@ class MessageState extends State<Message> {
 //  }
 
   Widget _listView() {
-    final _listTile = _messageList.map((item) {
+
+    final _listTile = Provider.of<SocketProvider>(context).messageList.map((item) {
       return Consumer<SocketProvider>(
           builder: (context, socketProvider, child) {
             Map _records = socketProvider.records;
@@ -69,7 +71,7 @@ class MessageState extends State<Message> {
              subtitle:_record.length>0? Text(_record.first.message):null,
              onTap: () async {
            // 获取下一页返回过来数据的方法，打开新页面page3后，便会等着返回，返回此页时就能拿到page3返回的数据
-           var res =
+//           var res =
                await Navigator.of(context).pushNamed('/chat', arguments: item);
          },
             );

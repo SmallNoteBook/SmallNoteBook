@@ -39,7 +39,6 @@ class ClientSocket {
       localSocket = socket;
 
       localContext = context;
-      print('Context ---->${context}');
       await Storage.getJson("userInfo").then((userInfo){
         this._id = userInfo["id"];
       });
@@ -74,16 +73,17 @@ class ClientSocket {
     var cnData = utf8.decode(data); // 将信息转为正常文字
 
     response = json.decode(cnData.toString());
-    print('-------response-------');
+//    print('-------response-------');
     print(response);
     // 判断返回的状态信息token验证是否成功，如果相等，变可以socket通信
     if (response['type'] == 'verify_success') {
 //      Fluttertoast.showToast(msg: '欢迎登录~');
        //这个可以当作全局的联系人
       Provider.of<SocketProvider>(localContext, listen: false).setContact(response["content"]);
+      Provider.of<SocketProvider>(localSocket,listen: false).initMessageList();
       //这个当作当前发送消息的人对应的消息列表
 //      Storage.set('messageList', response["content"]);
-      print("response[content]--------->${response["content"]}");
+//      print("response[content]--------->${response["content"]}");
       // 给后台发送心跳
       heartbeatSocket();
       return;
@@ -94,12 +94,12 @@ class ClientSocket {
     // if (response['recv_id'] != int.parse(response['send_id'])) {
 
     if (response['recv_id'] != response['send_id']) {
-      print("response['recv_id'] != response['send_id']-->${response['recv_id'] != response['send_id']}");
-      // 判断消息类型，存储到provide消息实体当中
-      print("response['send_id']---${response['send_id'] is int}");
-      print("response['Content']---${response['Content']}");
-      print("response['content_type']---${response['content_type']}");
-      print(localContext);
+//      print("response['recv_id'] != response['send_id']-->${response['recv_id'] != response['send_id']}");
+//      // 判断消息类型，存储到provide消息实体当中
+//      print("response['send_id']---${response['send_id'] is int}");
+//      print("response['Content']---${response['Content']}");
+//      print("response['content_type']---${response['content_type']}");
+//      print(localContext);
 
       switch (response['content_type']) {
         case 'audio':

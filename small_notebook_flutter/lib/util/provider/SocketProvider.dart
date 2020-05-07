@@ -7,7 +7,10 @@ class SocketProvider with ChangeNotifier {
   Socket socket; // 存储socket实例
   String netWorkstate = 'none'; // 网络状态
 //  List<ChatRecord> _records = List<ChatRecord>();
-  List contact = List();
+
+  List contact = List(); // 联系人数组
+
+  List messageList = List(); // 聊天人数组
   Map<int, List<ChatRecord>> records = Map();
 
 // 存储socket实例
@@ -17,8 +20,8 @@ class SocketProvider with ChangeNotifier {
   }
 
 // 存储发送来的消息
-// 私聊消息，消息类型, 是不是我发送的，语音时间长度, 是否需要显示成网络信息， 是不是历史记录存储
-  setRecords(id,message, String type, bool newIsMe,
+// 发送对象的id 私聊消息，消息类型, 是不是我发送的，语音时间长度, 是否需要显示成网络信息， 是不是历史记录存储
+  setRecords(id, message, String type, bool newIsMe,
       {String time_length, history: false}) {
     if (records.containsKey(id)) {
       records[id] = records[id]
@@ -40,14 +43,24 @@ class SocketProvider with ChangeNotifier {
         ]
       });
 
-      Storage.getJson('messageList').then((messageList) {
-        List _messageList = messageList;
-        Map _contact = contact.firstWhere((item) => item['id'] == id);
-        _messageList.add(_contact);
-        Storage.set('messageList', _messageList).then((value) {});
-      });
+      //根据现有联系人，获取到对应接受消息的人
+      Map _contact = contact.firstWhere((item) => item['id'] == id);
+
+      //判断如果没有聊天记录，则新加一条
+      if (!messageList.any((item) => item['id'] == _contact['id'])) {
+        messageList.add(_contact);
+        Storage.set('messageList', messageList)
+            .then((value) {}); // 添加到本地存储,以供下一次使用
+      }
     }
     notifyListeners();
+  }
+
+  //将本地存储的messageList 实例化到provider
+  initMessageList() {
+    Storage.getJson('messageList').then((_messageList) {
+      messageList = _messageList; // 添加到全局，以供message 列表使用
+    });
   }
 
   //更新联系人

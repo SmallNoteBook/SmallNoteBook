@@ -34,7 +34,7 @@ class ChatPageState extends State<ChatPage> {
   var localImage, localVideo; // 本地图片和视频
   var audioPath; // 语音路径
   var duration = Duration(milliseconds: 200);
-  Map<String,dynamic> _lastMessage = new Map();
+  Map<String, dynamic> _lastMessage = new Map();
   // 输入框
   TextEditingController _textEditingController;
   // 滚动控制器
@@ -197,7 +197,9 @@ class ChatPageState extends State<ChatPage> {
 //                              print('个人消息-----${_record[index].message},-----${arguments['id']}');
                               return _buildMsg(_record[index]);
                             },
-                            childCount: socketProvider?.records[arguments["id"]]?.length ??0,
+                            childCount: socketProvider
+                                    ?.records[arguments["id"]]?.length ??
+                                0,
                           ),
                         ),
                       ],
@@ -248,16 +250,17 @@ class ChatPageState extends State<ChatPage> {
                       Expanded(
                         flex: 1,
                         child: Container(
+                          height: 45,
                           padding: EdgeInsets.only(
                             left: 5.0,
                             right: 5.0,
-                            top: 5.0,
-                            bottom: 5.0,
+//                            top: 5.0,
+//                            bottom: 5.0,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(
-                              20,
+                              10,
                             )),
                           ),
                           child: TextField(
@@ -272,8 +275,7 @@ class ChatPageState extends State<ChatPage> {
                             onChanged: (val) {},
                             onSubmitted: (value) {
                               if (_textEditingController.text.isNotEmpty) {
-                                _sendMsg(_textEditingController.text,
-                                    socketProvider);
+                                _sendMsg(_textEditingController.text,socketProvider);
                                 _textEditingController.text = '';
                               }
                             },
@@ -300,7 +302,7 @@ class ChatPageState extends State<ChatPage> {
                         ),
                         onTap: () {
                           // 收起键盘
-                          // FocusScope.of(context).requestFocus(FocusNode());
+                           FocusScope.of(context).requestFocus(FocusNode());
                           setState(() {
                             this.soundRecording = false;
                             _height = 100;
@@ -328,18 +330,17 @@ class ChatPageState extends State<ChatPage> {
                           //   left: ScreenAdapter.setWidth(10),
                           // ),
                           decoration: BoxDecoration(
-                            // color: _textEditingController.text.isEmpty
-                            //     ? Colors.grey
-                            //     : Colors.green,
-                            color: Color(0xff4ADDFE),
+                             color: _textEditingController.text.isEmpty
+                              ? Colors.grey
+                              : Colors.cyan,
                             borderRadius: BorderRadius.all(Radius.circular(
-                              20,
+                              14,
                             )),
                           ),
                           child: Text(
                             '发送',
                             // S.of(context).send,
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                         ),
                       ),
@@ -475,30 +476,26 @@ class ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldLayout(
-        option: {
-          "title": arguments["username"],
+    return ScaffoldLayout(option: {
+      "title": arguments["username"],
 //          "leading":GestureDetector(child: Icon(Icons.arrow_back),onTap: (){
 //            Navigator.pop(context,_lastMessage);
 //          }),
-        },
-        child: _messages());
+    }, child: _messages());
   }
 
   // 构建消息视图
   Widget _buildMsg(ChatRecord entity) {
-    print('entity.message--->${entity.message}');
-    print('entity.newIsMe--->${entity.newIsMe}');
     if (entity == null || entity.newIsMe == null) {
       return Container();
     }
-    _lastMessage.addAll({'message':entity.message,'date':DateTime.now()});
+    _lastMessage.addAll({'message': entity.message, 'date': DateTime.now()});
     if (entity.newIsMe) {
       return Container(
         margin: EdgeInsets.all(
           10.0,
         ),
-        decoration: BoxDecoration(color: Colors.teal),
+//        decoration: BoxDecoration(color: Colors.teal),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -563,7 +560,10 @@ class ChatPageState extends State<ChatPage> {
               child: Container(
                 height: 40.0,
                 width: 40.0,
-//                child: Image.network('$base_url${arguments['head_pic']}', fit: BoxFit.cover,),
+                child: Image.asset(
+                  'images/login2.jpeg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Column(
